@@ -1,25 +1,84 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import ReactFlow, { ReactFlowProvider, addEdge, removeElements, Controls, Background } from 'react-flow-renderer';
+import NodeSidebar from './NodeSidebar';
+import DetailSidebar from './DetailSidebar';
 
-function App() {
+import './dnd.css';
+
+const initialElements = [];
+
+let id = 0;
+const getId = () => `dndnode_${id++}`;
+
+const DnDFlow = () => {
+
+  const [reactFlowInstance, setReactFlowInstance] = useState(null);
+  const [elements, setElements] = useState(initialElements);
+  const [currentNode, setCurrentNode] = useState(undefined);
+
+  const onLoad = (_reactFlowInstance) => setReactFlowInstance(_reactFlowInstance);
+  const onConnect = (params) => setElements((els) => addEdge(params, els));
+  const onElementsRemove = (elementsToRemove) => setElements((els) => removeElements(elementsToRemove, els));
+  const onDragOver = (event) => {
+    event.preventDefault();
+    event.dataTransfer.dropEffect = 'move';
+  };
+
+  const onDrop = (event) => {
+    event.preventDefault();
+
+    const node = JSON.parse(event.dataTransfer.getData('application/reactflow'));
+    const position = reactFlowInstance.project({ x: event.clientX, y: event.clientY });
+
+    const newNode = {
+      id: getId(),
+      type: node.type,
+      position,
+      sourcePosition: 'right',
+      targetPosition: 'left',
+      data: node.data,
+    };
+
+    setElements((es) => es.concat(newNode));
+
+    let ele = reactFlowInstance.getElements();
+
+    console.log(ele)
+  };
+
+  const onElementClick = (event, element) => {
+    setCurrentNode(element);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="dndflow">
+      <ReactFlowProvider>
+        <NodeSidebar />
+        <div className="reactflow-wrapper">
+          <ReactFlow
+            elements={elements}
+            onConnect={onConnect}
+            onElementClick={onElementClick}
+            onElementsRemove={onElementsRemove}
+            onLoad={onLoad}
+            onDrop={onDrop}
+            onDragOver={onDragOver}
+            connectionLineType="stepedge"
+            deleteKeyCode={46}
+            multiSelectionKeyCode={17}
+          >
+            <Background
+              variant="lines"
+              gap={48}
+              size={2}
+            />
+            <Controls />
+          </ReactFlow>
+        </div>
+        <DetailSidebar currentNode={currentNode} />
+      </ReactFlowProvider>
     </div>
   );
-}
+};
 
-export default App;
+export default DnDFlow;
