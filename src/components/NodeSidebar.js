@@ -1,5 +1,6 @@
 import React from 'react';
-import customNodes from "./nodes";
+import customNodes from "../constants/nodes";
+
 const NodeSidebar = () => {
 
     const nodes = customNodes;

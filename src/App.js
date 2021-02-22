@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import ReactFlow, { ReactFlowProvider, addEdge, removeElements, Controls, Background } from 'react-flow-renderer';
-import NodeSidebar from './NodeSidebar';
-import DetailSidebar from './DetailSidebar';
+import NodeSidebar from './components/NodeSidebar';
+import DetailSidebar from './components/DetailSidebar';
 
-import './dnd.css';
+import './assets/css/dnd.css';
 
 const initialElements = [];
 
