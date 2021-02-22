@@ -20,10 +20,6 @@ const CustomNodeComponent = ({ data }) => {
         }
     }
 
-    const onConnect = (c) => {
-        console.log("çağrıldı", c)
-    }
-    //target -> source
     return (
         <div style={{
             width: 75,
@@ -45,7 +41,6 @@ const CustomNodeComponent = ({ data }) => {
                         type="target"
                         position="left"
                         style={{ top: (index + 1) * 12, borderRadius: 5 }}
-                        onConnect={onConnect}
                         isValidConnection={isValidConnection}
                     />
                 )

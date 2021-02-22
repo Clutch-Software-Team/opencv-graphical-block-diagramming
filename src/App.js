@@ -41,10 +41,6 @@ const DnDFlow = () => {
     };
 
     setElements((es) => es.concat(newNode));
-
-    let ele = reactFlowInstance.getElements();
-
-    console.log(ele)
   };
 
   const onElementClick = (event, element) => {
