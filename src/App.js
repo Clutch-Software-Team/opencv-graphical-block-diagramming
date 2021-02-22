@@ -4,6 +4,7 @@ import NodeSidebar from './components/NodeSidebar';
 import DetailSidebar from './components/DetailSidebar';
 
 import './assets/css/dnd.css';
+import CustomNodeComponent from './components/custom-node';
 
 const initialElements = [];
 
@@ -50,12 +51,18 @@ const DnDFlow = () => {
     setCurrentNode(element);
   }
 
+  const nodeTypes = {
+    custom: CustomNodeComponent,
+  };
+
+
   return (
     <div className="dndflow">
       <ReactFlowProvider>
         <NodeSidebar />
         <div className="reactflow-wrapper">
           <ReactFlow
+            nodeTypes={nodeTypes}
             elements={elements}
             onConnect={onConnect}
             onElementClick={onElementClick}

@@ -2,176 +2,64 @@ const customNodes = [
     {
         key: 1,
         className: "dndnode",
-        type: "default",
+        type: "custom",
         data: {
             label: "Sobel",
             functionName: "Sobel",
             returnType: "void",
             parameters: [
-                {
-                    name: "src",
-                    type: "InputArray",
-                    required: true,
-                    default: undefined
-                },
-                {
-                    name: "dst",
-                    type: "OutputArray",
-                    required: true,
-                    default: undefined
-                },
-                {
-                    name: "ddepth",
-                    type: "int",
-                    required: true,
-                    default: undefined
-                },
-                {
-                    name: "dx",
-                    type: "int",
-                    required: true,
-                    default: undefined
-                },
-                {
-                    name: "dy",
-                    type: "int",
-                    required: true,
-                    default: undefined
-                },
-                {
-                    name: "ksize",
-                    type: "int",
-                    required: false,
-                    default: 3,
-                    canBe: [1, 3, 5, 7]
-                },
-                {
-                    name: "scale",
-                    type: "double",
-                    required: false,
-                    default: 1
-                },
-                {
-                    name: "delta",
-                    type: "double",
-                    required: false,
-                    default: 0
-                },
-                {
-                    name: "borderType",
-                    type: "int",
-                    required: false,
-                    default: 'BORDER_DEFAULT',
-                    canBe: '#BorderTypes'
-                },
-
+                { name: "src", type: "InputArray", required: true, default: undefined },
+                { name: "dst", type: "OutputArray", required: true, default: undefined },
+                { name: "ddepth", type: "int", required: true, default: undefined },
+                { name: "dx", type: "int", required: true, default: undefined },
+                { name: "dy", type: "int", required: true, default: undefined },
+                { name: "ksize", type: "int", required: false, default: 3, values: [1, 3, 5, 7] },
+                { name: "scale", type: "double", required: false, default: 1 },
+                { name: "delta", type: "double", required: false, default: 0 },
+                { name: "borderType", type: "int", required: false, default: 'BORDER_DEFAULT', values: '#BorderTypes' },
             ]
         }
     },
     {
         key: 2,
         className: "dndnode",
-        type: "default",
+        type: "custom",
         data: {
             label: "blur",
             functionName: "blur",
             returnType: "void",
             parameters: [
-                {
-                    name: "src",
-                    type: "InputArray",
-                    required: true,
-                    default: undefined
-                },
-                {
-                    name: "dst",
-                    type: "OutputArray",
-                    required: true,
-                    default: undefined
-                },
-                {
-                    name: "ksize",
-                    type: "Size",
-                    required: true,
-                    default: undefined
-                },
-                {
-                    name: "anchor",
-                    type: "Point",
-                    required: false,
-                    default: 'Point(-1, 1)'
-                },
-                {
-                    name: "borderType",
-                    type: "int",
-                    required: false,
-                    default: 'BORDER_DEFAULT',
-                    canBe: '#BorderTypes'
-                },
-
+                { name: "src", type: "InputArray", required: true, default: undefined },
+                { name: "dst", type: "OutputArray", required: true, default: undefined },
+                { name: "ksize", type: "Size", required: true, default: undefined },
+                { name: "anchor", type: "Point", required: false, default: 'Point(-1, 1)' },
+                { name: "borderType", type: "int", required: false, default: 'BORDER_DEFAULT', values: '#BorderTypes' },
             ]
         }
     },
     {
         key: 3,
         className: "dndnode",
-        type: "default",
+        type: "custom",
         data: {
             label: "boxFilter",
             functionName: "boxFilter",
             returnType: "void",
             parameters: [
-                {
-                    name: "src",
-                    type: "InputArray",
-                    required: true,
-                    default: undefined
-                },
-                {
-                    name: "dst",
-                    type: "OutputArray",
-                    required: true,
-                    default: undefined
-                },
-                {
-                    name: "ddepth",
-                    type: "int",
-                    required: true,
-                    default: undefined
-                },
-                {
-                    name: "ksize",
-                    type: "Size",
-                    required: true,
-                    default: undefined
-                },
-                {
-                    name: "anchor",
-                    type: "Point",
-                    required: false,
-                    default: 'Point(-1, 1)'
-                },
-                {
-                    name: "normalize",
-                    type: "bool",
-                    required: false,
-                    default: true
-                },
-                {
-                    name: "borderType",
-                    type: "int",
-                    required: false,
-                    default: 'BORDER_DEFAULT',
-                    canBe: '#BorderTypes'
-                },
-
+                { name: "src", type: "InputArray", required: true, default: undefined },
+                { name: "dst", type: "OutputArray", required: true, default: undefined },
+                { name: "ddepth", type: "int", required: true, default: undefined },
+                { name: "ksize", type: "Size", required: true, default: undefined },
+                { name: "anchor", type: "Point", required: false, default: 'Point(-1, 1)' },
+                { name: "normalize", type: "bool", required: false, default: true },
+                { name: "borderType", type: "int", required: false, default: 'BORDER_DEFAULT', values: '#BorderTypes' },
             ]
         }
     },
     {
         key: 4,
         className: "dndnode",
-        type: "default",
+        type: "custom",
         data: {
             label: "compareHist",
             functionName: "compareHist",
@@ -186,7 +74,7 @@ const customNodes = [
     {
         key: 5,
         className: "dndnode",
-        type: "default",
+        type: "custom",
         data: {
             label: "cornerHarris",
             functionName: "cornerHarris",
@@ -204,7 +92,7 @@ const customNodes = [
     {
         key: 6,
         className: "dndnode",
-        type: "default",
+        type: "custom",
         data: {
             label: "cvtColor",
             functionName: "cvtColor",
@@ -220,7 +108,7 @@ const customNodes = [
     {
         key: 7,
         className: "dndnode",
-        type: "default",
+        type: "custom",
         data: {
             label: "Canny",
             functionName: "Canny",
@@ -236,7 +124,7 @@ const customNodes = [
     {
         key: 8,
         className: "dndnode",
-        type: "default",
+        type: "custom",
         data: {
             label: "GaussianBlur",
             functionName: "GaussianBlur",
@@ -254,7 +142,7 @@ const customNodes = [
     {
         key: 9,
         className: "dndnode",
-        type: "default",
+        type: "custom",
         data: {
             label: "Laplacian",
             functionName: "Laplacian",
@@ -272,7 +160,7 @@ const customNodes = [
     {
         key: 10,
         className: "dndnode",
-        type: "default",
+        type: "custom",
         data: {
             label: "findContours",
             functionName: "findContours",
@@ -289,7 +177,7 @@ const customNodes = [
     {
         key: 11,
         className: "dndnode",
-        type: "default",
+        type: "custom",
         data: {
             label: "filter2D",
             functionName: "filter2D",
@@ -308,7 +196,7 @@ const customNodes = [
     {
         key: 12,
         className: "dndnode",
-        type: "default",
+        type: "custom",
         data: {
             label: "distanceTransform",
             functionName: "distanceTransform",
@@ -325,7 +213,7 @@ const customNodes = [
     {
         key: 13,
         className: "dndnode",
-        type: "default",
+        type: "custom",
         data: {
             label: "resize",
             functionName: "resize",
@@ -400,7 +288,7 @@ const customNodes = [
     {
         key: 14,
         className: "dndnode",
-        type: "default",
+        type: "custom",
         data: {
             label: "medianBlur",
             functionName: "medianBlur",
@@ -435,7 +323,7 @@ const customNodes = [
     {
         key: 15,
         className: "dndnode",
-        type: "default",
+        type: "custom",
         data: {
             label: "putText",
             functionName: "putText",
