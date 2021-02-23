@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 export const NodeStateContext = React.createContext({
     nodes: [],
-    assignValue: (params) => { },
+    assignValue: (params) => { }
 });
 
 export const NodeStateProvider = ({ children }) => {
@@ -21,9 +21,12 @@ export const NodeStateProvider = ({ children }) => {
                     }
                 }
 
-                const index = nodes_.indexOf(params.node);
+                let filteredArray = nodes_.filter(node => params.node.id === node.id);
 
-                if (index === -1) {
+                const length = filteredArray.length;
+                const index = nodes_.indexOf(filteredArray[0])
+
+                if (length === 0) {
                     nodes_.push(params.node);
                     setNodes(nodes_);
                 }
