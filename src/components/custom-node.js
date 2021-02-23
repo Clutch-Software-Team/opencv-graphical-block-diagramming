@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Handle } from 'react-flow-renderer';
 import uuid from 'react-uuid';
+import { NodeStateContext } from '../provider/node-state-provider';
 
-const CustomNodeComponent = ({ data }) => {
+const CustomNodeComponent = (node) => {
+    let { nodes, assignValue } = useContext(NodeStateContext)
 
     const isValidConnection = (connection) => {
         if (connection.source === connection.target) {
@@ -20,10 +22,14 @@ const CustomNodeComponent = ({ data }) => {
         }
     }
 
+    const onConnect = (connection) => {
+        assignValue(connection)
+    }
+
     return (
         <div style={{
             width: 75,
-            height: data.parameters.length * 10,
+            height: node.data.parameters.length * 10,
             padding: 10,
             fontSize: 12,
             background: "#f0f2f3",
@@ -33,7 +39,7 @@ const CustomNodeComponent = ({ data }) => {
             borderStyle: "solid",
             borderColor: "#555",
         }}>
-            {data.parameters.map((parameter, index) => {
+            {node.data.parameters.map((parameter, index) => {
                 return (
                     <Handle
                         key={uuid()}
@@ -41,17 +47,19 @@ const CustomNodeComponent = ({ data }) => {
                         type="target"
                         position="left"
                         style={{ top: (index + 1) * 12, borderRadius: 5 }}
+                        onConnect={onConnect}
                         isValidConnection={isValidConnection}
                     />
                 )
             })}
-            <div>{data.functionName}</div>
-            {data.returnType !== "void" ?
+            <div>{node.data.functionName}</div>
+            {node.data.returnType !== "void" ?
                 <Handle
-                    id={`${data.functionName}-${data.returnType}`}
+                    id={`${node.data.functionName}-${node.data.returnType}`}
                     type="source"
                     position="right"
                     style={{ borderRadius: 5 }}
+                    onConnect={onConnect}
                     isValidConnection={isValidConnection}
                 /> : null}
         </div>

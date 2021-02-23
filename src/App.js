@@ -5,6 +5,7 @@ import DetailSidebar from './components/DetailSidebar';
 
 import './assets/css/dnd.css';
 import CustomNodeComponent from './components/custom-node';
+import { NodeStateProvider } from './provider/node-state-provider';
 
 const initialElements = [];
 
@@ -53,34 +54,36 @@ const DnDFlow = () => {
 
 
   return (
-    <div className="dndflow">
-      <ReactFlowProvider>
-        <NodeSidebar />
-        <div className="reactflow-wrapper">
-          <ReactFlow
-            nodeTypes={nodeTypes}
-            elements={elements}
-            onConnect={onConnect}
-            onElementClick={onElementClick}
-            onElementsRemove={onElementsRemove}
-            onLoad={onLoad}
-            onDrop={onDrop}
-            onDragOver={onDragOver}
-            connectionLineType="stepedge"
-            deleteKeyCode={46}
-            multiSelectionKeyCode={17}
-          >
-            <Background
-              variant="lines"
-              gap={48}
-              size={2}
-            />
-            <Controls />
-          </ReactFlow>
-        </div>
-        <DetailSidebar currentNode={currentNode} />
-      </ReactFlowProvider>
-    </div>
+    <NodeStateProvider>
+      <div className="dndflow">
+        <ReactFlowProvider>
+          <NodeSidebar />
+          <div className="reactflow-wrapper">
+            <ReactFlow
+              nodeTypes={nodeTypes}
+              elements={elements}
+              onConnect={onConnect}
+              onElementClick={onElementClick}
+              onElementsRemove={onElementsRemove}
+              onLoad={onLoad}
+              onDrop={onDrop}
+              onDragOver={onDragOver}
+              connectionLineType="stepedge"
+              deleteKeyCode={46}
+              multiSelectionKeyCode={17}
+            >
+              <Background
+                variant="lines"
+                gap={48}
+                size={2}
+              />
+              <Controls />
+            </ReactFlow>
+          </div>
+          <DetailSidebar currentNode={currentNode} />
+        </ReactFlowProvider>
+      </div>
+    </NodeStateProvider>
   );
 };
 
