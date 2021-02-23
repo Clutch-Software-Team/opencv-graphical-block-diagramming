@@ -28,14 +28,14 @@ const DnDFlow = () => {
 
   const onConnect = (params) => {
     let elements = reactFlowInstance.getElements();
-
     let targetID = params.target;
+    let sourceID = params.source;
     let targetParamName = params.targetHandle.split("-")[1];
     let targetParamValue = "";
-    let [type, name] = params.sourceHandle.split("-");
+    let [type] = params.sourceHandle.split("-");
 
     if (type === "return") {
-      targetParamValue = `ref:${name}`;
+      targetParamValue = `ref:${sourceID}`;
     }
 
     for (const element of elements) {
