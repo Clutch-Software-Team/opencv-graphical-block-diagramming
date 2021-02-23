@@ -17,7 +17,7 @@ const DnDFlow = () => {
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
   const [elements, setElements] = useState(initialElements);
   const [currentNode, setCurrentNode] = useState(undefined);
-  const { assignValue } = useContext(NodeStateContext);
+  const { nodes, assignValue } = useContext(NodeStateContext);
 
   const onLoad = (_reactFlowInstance) => setReactFlowInstance(_reactFlowInstance);
   const onElementsRemove = (elementsToRemove) => setElements((els) => removeElements(elementsToRemove, els));
@@ -28,6 +28,10 @@ const DnDFlow = () => {
 
   const onConnect = (params) => {
     let elements = reactFlowInstance.getElements();
+
+    //deep copy elements 
+    let elements_ = JSON.parse(JSON.stringify(elements));
+
     let targetID = params.target;
     let sourceID = params.source;
     let targetParamName = params.targetHandle.split("-")[1];
@@ -38,7 +42,7 @@ const DnDFlow = () => {
       targetParamValue = `ref:${sourceID}`;
     }
 
-    for (const element of elements) {
+    for (const element of elements_) {
       if (element.id === targetID) {
         assignValue({
           node: element,
@@ -69,6 +73,11 @@ const DnDFlow = () => {
     setElements((es) => es.concat(newNode));
   };
 
+  const run = () => {
+    let elements = reactFlowInstance.getElements();
+    console.log(nodes, elements);
+  }
+
   const onElementClick = (event, element) => {
     setCurrentNode(element);
   }
@@ -83,6 +92,7 @@ const DnDFlow = () => {
       <ReactFlowProvider>
         <NodeSidebar />
         <div className="reactflow-wrapper">
+          <button className="run_btn" onClick={run}>Run</button>
           <ReactFlow
             nodeTypes={nodeTypes}
             elements={elements}
