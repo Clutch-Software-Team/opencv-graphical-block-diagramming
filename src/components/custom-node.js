@@ -19,41 +19,72 @@ const CustomNodeComponent = (node) => {
             return false;
         }
     }
+    let local_index = 0;
 
     return (
-        <div style={{
-            width: 75,
-            height: node.data.parameters.length * 10,
-            padding: 10,
-            fontSize: 12,
-            background: "#f0f2f3",
-            textAlign: "center",
-            borderRadius: 5,
-            borderWidth: 1,
-            borderStyle: "solid",
-            borderColor: "#555",
-        }}>
+        <div style={{ height: node.data.parameters.length * 30 }}>
             {node.data.parameters.map((parameter, index) => {
-                return (
-                    <Handle
-                        key={uuid()}
-                        id={`param-${parameter.name}-${parameter.type}`}
-                        type="target"
-                        position="left"
-                        style={{ top: (index + 1) * 12, borderRadius: 5 }}
-                        isValidConnection={isValidConnection}
-                    />
-                )
+                if (parameter.type !== "OutputArray") {
+                    local_index += 1;
+                    return (
+                        <div key={uuid()} style={{ textAlign: "left", marginBottom: -2 }}>
+                            <Handle
+                                key={uuid()}
+                                id={`param-${parameter.name}-${parameter.type}`}
+                                type="target"
+                                position="left"
+                                style={{ top: local_index * 28, borderRadius: 15, height: 7, width: 7 }}
+                                isValidConnection={isValidConnection}
+                            />
+                            <h4 key={uuid()}>{parameter.name} ({parameter.type})</h4>
+                        </div>
+                    )
+                }
+                else {
+                    return null;
+                }
             })}
-            <div>{node.data.functionName}</div>
+            {node.data.parameters.map((parameter) => {
+                if (node.data.returnType === "void") {
+                    if (parameter.type === "OutputArray") {
+                        return (
+                            <div key={uuid()} style={{ textAlign: "right", marginBottom: -2 }}>
+                                <Handle
+                                    key={uuid()}
+                                    id={`param-${parameter.name}-${parameter.type}`}
+                                    type="source"
+                                    position="right"
+                                    style={{ borderRadius: 15, height: 7, width: 7 }}
+                                    isValidConnection={isValidConnection}
+                                />
+                                <h4 key={uuid()}>{parameter.name} ({parameter.type})</h4>
+                            </div>
+                        )
+                    }
+                    else {
+                        return null;
+                    }
+                }
+                else {
+                    return null;
+                }
+            })}
+
             {node.data.returnType !== "void" ?
                 <Handle
                     id={`return-${node.data.functionName}-${node.data.returnType}`}
                     type="source"
                     position="right"
-                    style={{ borderRadius: 5 }}
+                    style={{ borderRadius: 15, height: 7, width: 7 }}
                     isValidConnection={isValidConnection}
-                /> : null}
+                />
+                :
+                null
+            }
+            <div style={{ marginBottom: 5 }}>
+                {node.data.functionName}
+                <b> {node.data.returnType !== "void" ? `(${node.data.returnType})` : ""}</b>
+            </div>
         </div>
     );
 };
