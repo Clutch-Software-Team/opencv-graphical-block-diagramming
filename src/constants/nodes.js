@@ -1,5 +1,14 @@
 const customNodes = [
     {
+        key: 0,
+        className: "dndnode",
+        type: "start",
+        data: {
+            label: "start",
+            functionName: "start",
+        }
+    },
+    {
         key: 1,
         className: "dndnode",
         type: "custom",
@@ -263,6 +272,18 @@ const customNodes = [
                 { name: "thickness", type: "int", required: false, default: true },
                 { name: "lineType", type: "int", required: true, default: "8" },
                 { name: "bottomLeftOrigin", type: "bool", required: true, default: "false" }
+            ]
+        }
+    },
+    {
+        key: 16,
+        className: "dndnode",
+        type: "finish",
+        data: {
+            label: "finish",
+            functionName: "finish",
+            parameters: [
+                { name: "finish", type: "OutputArray", required: true, default: "" },
             ]
         }
     },

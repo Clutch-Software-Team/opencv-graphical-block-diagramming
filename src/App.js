@@ -1,65 +1,36 @@
 import React, { useContext, useState } from 'react';
 import ReactFlow, { ReactFlowProvider, addEdge, removeElements, Controls, Background } from 'react-flow-renderer';
-import NodeSidebar from './components/node-sidebar';
-import DetailSidebar from './components/detail-sidebar';
-
-import './assets/css/dnd.css';
-import './assets/css/validation.css';
-import CustomNodeComponent from './components/custom-node';
-import StartNode from './components/start-node';
-import FinishNode from './components/finish-node';
 
 import { NodeStateContext } from './provider/node-state-provider';
+import DetailSidebar from './components/detail-sidebar';
+import initialNodes from './constants/initial-nodes';
+import NodeSidebar from './components/node-sidebar';
+import nodeTypes from './constants/node-types';
+import getId from './helpers/get-id';
 
-const initialElements = [{
-  id: "start_0",
-  data: {
-    label: "start",
-  },
-  position: { x: 120, y: 450 },
-  sourcePosition: "right",
-  type: "start"
-},
-{
-  id: "finish_0",
-  data: {
-    label: "finish",
-    parameters: [
-      { name: "finish", type: "OutputArray", required: true, default: "" },
-    ]
-  },
-  position: { x: 920, y: 450 },
-  targetPosition: "left",
-  type: "finish"
-}
-];
+import './assets/css/validation.css';
+import './assets/css/dnd.css';
 
-let id = 0;
-const getId = () => `dndnode_${id++}`;
-
-const DnDFlow = () => {
+export default function DnDFlow() {
 
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
-  const [elements, setElements] = useState(initialElements);
-  const [currentNode, setCurrentNode] = useState(undefined);
   const { nodes, assignValue } = useContext(NodeStateContext);
+  const [currentNode, setCurrentNode] = useState(undefined);
+  const [elements, setElements] = useState(initialNodes);
 
-  const onLoad = (_reactFlowInstance) => setReactFlowInstance(_reactFlowInstance);
   const onElementsRemove = (elementsToRemove) => setElements((els) => removeElements(elementsToRemove, els));
-  const onDragOver = (event) => {
-    event.preventDefault();
-    event.dataTransfer.dropEffect = 'move';
-  };
+  const onDragOver = (event) => { event.preventDefault(); event.dataTransfer.dropEffect = 'move'; };
+  const onLoad = (_reactFlowInstance) => setReactFlowInstance(_reactFlowInstance);
 
   const onConnect = (params) => {
-    let elements = reactFlowInstance.getElements();
-    let elements_ = JSON.parse(JSON.stringify(elements));
+    let elements_ = JSON.parse(JSON.stringify(reactFlowInstance.getElements()));
 
-    let targetID = params.target;
-    let sourceID = params.source;
+    let { target: targetID, source: sourceID } = params;
+
     let targetParamName = params.targetHandle.split("-")[1];
     let targetParamValue = "";
-    let [type, name, paramType] = params.sourceHandle.split("-");
+
+    let [type, , paramType] = params.sourceHandle.split("-");
 
     if (type === "return" || paramType === "OutputArray") {
       targetParamValue = `ref:${sourceID}`;
@@ -85,7 +56,7 @@ const DnDFlow = () => {
     const position = reactFlowInstance.project({ x: event.clientX, y: event.clientY });
 
     const newNode = {
-      id: getId(),
+      id: getId(node.type),
       type: node.type,
       position,
       sourcePosition: 'right',
@@ -96,21 +67,17 @@ const DnDFlow = () => {
     setElements((es) => es.concat(newNode));
   };
 
+  const onElementClick = (event, element) => {
+    //check if clicked element is a node
+    if (!element.source) {
+      setCurrentNode(element);
+    }
+  }
+
   const run = () => {
     let elements = reactFlowInstance.getElements();
     console.log(nodes, elements);
   }
-
-  const onElementClick = (event, element) => {
-    setCurrentNode(element);
-  }
-
-  const nodeTypes = {
-    start: StartNode,
-    custom: CustomNodeComponent,
-    finish: FinishNode
-  };
-
 
   return (
     <div className="dndflow">
@@ -144,5 +111,3 @@ const DnDFlow = () => {
     </div>
   );
 };
-
-export default DnDFlow;

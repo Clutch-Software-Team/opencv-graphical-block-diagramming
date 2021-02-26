@@ -8,7 +8,7 @@ const DetailSidebar = (props) => {
     const { nodes, assignValue } = useContext(NodeStateContext);
 
     useEffect(() => {
-        if (props.currentNode?.id === "start_0" || props.currentNode?.id === "finish_0") {
+        if (props.currentNode?.type === "start" || props.currentNode?.type === "finish") {
             return;
         }
         else {
