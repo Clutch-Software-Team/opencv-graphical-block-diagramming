@@ -5,7 +5,7 @@ import { NodeStateContext } from '../provider/node-state-provider';
 const DetailSidebar = (props) => {
     const [node, setNode] = useState(undefined);
     const [inputValues, setInputValues] = useState([]);
-    const { assignValue } = useContext(NodeStateContext);
+    const { nodes, assignValue } = useContext(NodeStateContext);
 
     useEffect(() => {
         if (props.currentNode?.id === "start_0" || props.currentNode?.id === "finish_0") {
@@ -20,9 +20,17 @@ const DetailSidebar = (props) => {
     const onChange = (index, e) => {
         let paramName = e.target.name;
         let paramValue = e.target.value;
+        let curr_node = undefined;
+
+        for (const node_ of nodes) {
+            if (node_.id === node.id) {
+                curr_node = node_;
+                break;
+            }
+        }
 
         assignValue({
-            node: node,
+            node: curr_node,
             paramName: paramName,
             paramValue: paramValue
         })
