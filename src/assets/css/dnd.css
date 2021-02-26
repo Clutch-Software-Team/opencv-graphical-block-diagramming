@@ -1,13 +1,5 @@
-.reactflow-wrapper{
+.reactflow-wrapper {
     height: 100vh !important;
-}
-
-.run_btn{
-    position: absolute;
-    right: 0;
-    margin-right: 300px;
-    margin-top: 20px;
-    z-index: 999;
 }
 
 .dndflow {
@@ -39,14 +31,6 @@
     cursor: grab;
 }
 
-.dndflow .dndnode.input {
-    border-color: #0041d0;
-}
-
-.dndflow .dndnode.output {
-    border-color: #ff0072;
-}
-
 .dndflow .reactflow-wrapper {
     flex-grow: 1;
     height: 100%;
@@ -62,6 +46,10 @@
     }
 }
 
-.run_button {
-    margin-top: 100px;
+.run_btn {
+    position: absolute;
+    right: 0;
+    margin-right: 300px;
+    margin-top: 20px;
+    z-index: 999;
 }

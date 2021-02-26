@@ -1,13 +1,38 @@
 import React, { useContext, useState } from 'react';
 import ReactFlow, { ReactFlowProvider, addEdge, removeElements, Controls, Background } from 'react-flow-renderer';
-import NodeSidebar from './components/NodeSidebar';
-import DetailSidebar from './components/DetailSidebar';
+import NodeSidebar from './components/node-sidebar';
+import DetailSidebar from './components/detail-sidebar';
 
 import './assets/css/dnd.css';
+import './assets/css/validation.css';
 import CustomNodeComponent from './components/custom-node';
+import StartNode from './components/start-node';
+import FinishNode from './components/finish-node';
+
 import { NodeStateContext } from './provider/node-state-provider';
 
-const initialElements = [];
+const initialElements = [{
+  id: "start_0",
+  data: {
+    label: "start",
+  },
+  position: { x: 120, y: 450 },
+  sourcePosition: "right",
+  type: "start"
+},
+{
+  id: "finish_0",
+  data: {
+    label: "finish",
+    parameters: [
+      { name: "finish", type: "OutputArray", required: true, default: "" },
+    ]
+  },
+  position: { x: 920, y: 450 },
+  targetPosition: "left",
+  type: "finish"
+}
+];
 
 let id = 0;
 const getId = () => `dndnode_${id++}`;
@@ -28,17 +53,15 @@ const DnDFlow = () => {
 
   const onConnect = (params) => {
     let elements = reactFlowInstance.getElements();
-
-    //deep copy elements 
     let elements_ = JSON.parse(JSON.stringify(elements));
 
     let targetID = params.target;
     let sourceID = params.source;
     let targetParamName = params.targetHandle.split("-")[1];
     let targetParamValue = "";
-    let [type] = params.sourceHandle.split("-");
+    let [type, name, paramType] = params.sourceHandle.split("-");
 
-    if (type === "return") {
+    if (type === "return" || paramType === "OutputArray") {
       targetParamValue = `ref:${sourceID}`;
     }
 
@@ -83,7 +106,9 @@ const DnDFlow = () => {
   }
 
   const nodeTypes = {
+    start: StartNode,
     custom: CustomNodeComponent,
+    finish: FinishNode
   };
 
 
@@ -102,7 +127,7 @@ const DnDFlow = () => {
             onLoad={onLoad}
             onDrop={onDrop}
             onDragOver={onDragOver}
-            connectionLineType="stepedge"
+            className="validationflow"
             deleteKeyCode={46}
             multiSelectionKeyCode={17}
           >

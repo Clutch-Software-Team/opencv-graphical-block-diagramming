@@ -5,11 +5,16 @@ import { NodeStateContext } from '../provider/node-state-provider';
 const DetailSidebar = (props) => {
     const [node, setNode] = useState(undefined);
     const [inputValues, setInputValues] = useState([]);
-    const { nodes, assignValue } = useContext(NodeStateContext);
+    const { assignValue } = useContext(NodeStateContext);
 
     useEffect(() => {
-        setInputValues(props.currentNode?.data.parameters.map(() => ""));
-        setNode(props.currentNode);
+        if (props.currentNode?.id === "start_0" || props.currentNode?.id === "finish_0") {
+            return;
+        }
+        else {
+            setInputValues(props.currentNode?.data.parameters.map(() => ""));
+            setNode(props.currentNode);
+        }
     }, [props.currentNode])
 
     const onChange = (index, e) => {
@@ -28,10 +33,6 @@ const DetailSidebar = (props) => {
         setInputValues(values);
     }
 
-    const run = () => {
-        console.log(nodes)
-    }
-
     if (node !== undefined) {
         return (
             <aside>
@@ -39,7 +40,7 @@ const DetailSidebar = (props) => {
                 <hr />
                 {node.data.parameters.map((parameter, index) => {
                     if (!parameter.required) {
-                        return;
+                        return null;
                     }
                     if (parameter.type === "int" || parameter.type === "double") {
                         return (
@@ -56,7 +57,6 @@ const DetailSidebar = (props) => {
                     }
                 }
                 )}
-                <button onClick={run}>run</button>
             </aside>
         )
     }
