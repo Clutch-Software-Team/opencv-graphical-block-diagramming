@@ -12,20 +12,55 @@ const DetailSidebar = (props) => {
             return;
         }
         else {
-            setInputValues(props.currentNode?.data.parameters.map(() => ""));
+            if (props.currentNode) {
+                if (nodes.length === 0) {
+                    setInputValues(props.currentNode.data.parameters.map(() => ""));
+                }
+                else {
+                    let isNodeFound = false;
+                    for (const node of nodes) {
+                        if (node.id === props.currentNode.id) {
+                            isNodeFound = true;
+                            let inputValues = []
+                            for (const parameter of node.data.parameters) {
+                                if (parameter.currentValue) {
+                                    inputValues.push(parameter.currentValue);
+                                }
+                                else {
+                                    inputValues.push("");
+                                }
+                            }
+                            setInputValues(inputValues);
+                        }
+                    }
+
+                    if (!isNodeFound) {
+                        setInputValues(props.currentNode.data.parameters.map(() => ""));
+                    }
+                }
+            }
             setNode(props.currentNode);
         }
-    }, [props.currentNode])
+    }, [props.currentNode, nodes])
 
     const onChange = (index, e) => {
         let paramName = e.target.name;
         let paramValue = e.target.value;
         let curr_node = undefined;
 
-        for (const node_ of nodes) {
-            if (node_.id === node.id) {
-                curr_node = node_;
-                break;
+        if (nodes.length === 0) {
+            curr_node = node;
+        }
+        else {
+            for (const node_ of nodes) {
+                if (node_.id === node.id) {
+                    curr_node = node_;
+                    break;
+                }
+            }
+
+            if (!curr_node) {
+                curr_node = node;
             }
         }
 
@@ -47,22 +82,12 @@ const DetailSidebar = (props) => {
                 <h1>{node.data.functionName} Function</h1>
                 <hr />
                 {node.data.parameters.map((parameter, index) => {
-                    if (!parameter.required) {
-                        return null;
-                    }
-                    if (parameter.type === "int" || parameter.type === "double") {
-                        return (
-                            <div key={parameter.name}>
-                                <h3>{parameter.name}</h3>
-                                <input onChange={(e) => onChange(index, e)} value={inputValues[index]} name={parameter.name} />
-                            </div>
-                        )
-                    }
-                    else {
-                        return (
-                            <h3 key={uuid()}>{parameter.name}</h3>
-                        )
-                    }
+                    return (
+                        <div key={parameter.name}>
+                            <h3>{parameter.name}</h3>
+                            <input onChange={(e) => onChange(index, e)} value={inputValues[index]} name={parameter.name} />
+                        </div>
+                    )
                 }
                 )}
             </aside>

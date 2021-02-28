@@ -36,13 +36,28 @@ export default function DnDFlow() {
       targetParamValue = `ref:${sourceID}`;
     }
 
-    for (const element of elements_) {
-      if (element.id === targetID) {
+    let isNodeFound = false;
+
+    for (const node of nodes) {
+      if (node.id === targetID) {
+        isNodeFound = true;
         assignValue({
-          node: element,
+          node: node,
           paramName: targetParamName,
           paramValue: targetParamValue
         })
+      }
+    }
+
+    if (!isNodeFound) {
+      for (const element of elements_) {
+        if (element.id === targetID) {
+          assignValue({
+            node: element,
+            paramName: targetParamName,
+            paramValue: targetParamValue
+          })
+        }
       }
     }
 
