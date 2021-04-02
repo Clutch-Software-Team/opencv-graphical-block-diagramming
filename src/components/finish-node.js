@@ -1,6 +1,7 @@
-import React, { memo } from 'react';
+import React from 'react';
 import { Handle } from 'react-flow-renderer';
-export default memo(({ data }) => {
+
+const FinishNodeComponent = (node) => {
     return (
         <>
             <Handle
@@ -12,8 +13,10 @@ export default memo(({ data }) => {
             />
             <div style={{ width: 250, height: 300 }}>
                 <h3>Output</h3>
-                <canvas id="canvasOutput"></canvas>
+                <canvas id={node.id}></canvas>
             </div>
         </>
     );
-});
+};
+
+export default FinishNodeComponent;

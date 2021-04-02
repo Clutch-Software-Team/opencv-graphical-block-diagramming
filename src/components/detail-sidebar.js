@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-import uuid from 'react-uuid'
 import { NodeStateContext } from '../provider/node-state-provider';
 
 const DetailSidebar = (props) => {
@@ -13,30 +12,25 @@ const DetailSidebar = (props) => {
         }
         else {
             if (props.currentNode) {
-                if (nodes.length === 0) {
-                    setInputValues(props.currentNode.data.parameters.map(() => ""));
-                }
-                else {
-                    let isNodeFound = false;
-                    for (const node of nodes) {
-                        if (node.id === props.currentNode.id) {
-                            isNodeFound = true;
-                            let inputValues = []
-                            for (const parameter of node.data.parameters) {
-                                if (parameter.currentValue) {
-                                    inputValues.push(parameter.currentValue);
-                                }
-                                else {
-                                    inputValues.push("");
-                                }
+                let isNodeFound = false;
+                for (const node of nodes) {
+                    if (node.id === props.currentNode.id) {
+                        isNodeFound = true;
+                        let inputValues = []
+                        for (const parameter of node.data.parameters) {
+                            if (parameter.currentValue) {
+                                inputValues.push(parameter.currentValue);
                             }
-                            setInputValues(inputValues);
+                            else {
+                                inputValues.push("");
+                            }
                         }
+                        setInputValues(inputValues);
                     }
+                }
 
-                    if (!isNodeFound) {
-                        setInputValues(props.currentNode.data.parameters.map(() => ""));
-                    }
+                if (!isNodeFound) {
+                    setInputValues(props.currentNode.data.parameters.map(() => ""));
                 }
             }
             setNode(props.currentNode);

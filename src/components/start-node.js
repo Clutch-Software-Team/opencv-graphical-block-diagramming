@@ -1,6 +1,7 @@
-import React, { memo } from 'react';
+import React from 'react';
 import { Handle } from 'react-flow-renderer';
-export default memo(({ data }) => {
+
+const StartNodeComponent = (node) => {
 
     const isValidConnection = (connection) => {
         if (connection.source === connection.target) {
@@ -19,14 +20,14 @@ export default memo(({ data }) => {
     }
 
     const onChange = (event) => {
-        let imgElement = document.getElementById('imageSrc');
+        let imgElement = document.getElementById(node.id);
         imgElement.src = URL.createObjectURL(event.target.files[0]);
     };
 
     return (
         <>
             <div style={{ width: 250, height: 250 }}>
-                <img id="imageSrc" alt="" style={{ width: 250, height: 225 }} />
+                <img id={node.id} alt="" style={{ width: 250, height: 225 }} />
                 <br />
                 <input
                     className="nodrag"
@@ -43,4 +44,6 @@ export default memo(({ data }) => {
             />
         </>
     );
-});
+};
+
+export default StartNodeComponent;
