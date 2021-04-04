@@ -61,25 +61,29 @@ export default function DnDFlow() {
       }
     }
 
+    params.animated = true
+    params.type = "smoothstep"
     setElements((els) => addEdge(params, els))
   };
 
   const onDrop = (event) => {
     event.preventDefault();
+    let eventData = event.dataTransfer.getData('application/reactflow');
+    if (eventData !== "") {
+      const node = JSON.parse(eventData);
+      const position = reactFlowInstance.project({ x: event.clientX, y: event.clientY });
 
-    const node = JSON.parse(event.dataTransfer.getData('application/reactflow'));
-    const position = reactFlowInstance.project({ x: event.clientX, y: event.clientY });
+      const newNode = {
+        id: getId(node.type),
+        type: node.type,
+        position,
+        sourcePosition: 'right',
+        targetPosition: 'left',
+        data: node.data,
+      };
 
-    const newNode = {
-      id: getId(node.type),
-      type: node.type,
-      position,
-      sourcePosition: 'right',
-      targetPosition: 'left',
-      data: node.data,
-    };
-
-    setElements((es) => es.concat(newNode));
+      setElements((es) => es.concat(newNode));
+    }
   };
 
   const onElementClick = (event, element) => {
@@ -109,14 +113,18 @@ export default function DnDFlow() {
             onLoad={onLoad}
             onDrop={onDrop}
             onDragOver={onDragOver}
-            className="validationflow"
             deleteKeyCode={46}
             multiSelectionKeyCode={17}
+            onlyRenderVisibleElements={false}
           >
             <Background
               variant="lines"
-              gap={48}
-              size={2}
+              gap={24}
+              size={1}
+              color="#292929"
+              style={{
+                backgroundColor: "#393939"
+              }}
             />
             <Controls />
           </ReactFlow>
