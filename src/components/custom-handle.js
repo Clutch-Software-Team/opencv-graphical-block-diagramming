@@ -1,93 +1,90 @@
 
 
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Handle } from 'react-flow-renderer';
-import uuid from 'react-uuid';
+import getHandleColor from '../helpers/get-handle-color';
+import isValidConnection from '../helpers/is-valid-connection';
+import { NodeStateContext } from '../provider/node-state-provider';
 
 const CustomHandle = (props) => {
+    const [parameterValue, setParameterValue] = useState("");
+    const [isReferenced, setIsReferenced] = useState(false);
 
-    const { parameter, isFunctionReturn, position, localIndex, type } = props;
+    const { assignValue } = useContext(NodeStateContext);
 
-    const DEFAULT_MARGIN = 30
-    const DEFAULT_HANDLE_MARGIN = -1
+    const { node, parameter, isFunctionReturn, position, localIndex, type } = props;
 
-    const isValidConnection = (connection) => {
-        if (connection.source === connection.target) {
-            return false;
+
+    useEffect(() => {
+        if (parameterValue.startsWith("ref:")) {
+            setIsReferenced(true);
         }
-
-        let sourceType = connection.sourceHandle.split("-")[2];
-        let targetType = connection.targetHandle.split("-")[2];
-
-        if (targetType === sourceType) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-
-    const getHandleColor = () => {
-        switch (parameter.type) {
-            case 'InputArray':
-                return "yellow"
-
-            case 'OutputArray':
-                return "purple"
-
-            case 'void':
-                return "blue"
-
-            case 'double':
-                return "red"
-
-            default:
-                return "gray"
-        }
-    }
+    }, [parameterValue])
 
     const containerStyle = {
         display: "flex",
-        flexDirection: position === "right" ? "row-reverse" : "row"
-    }
-
-    const nameStyle = {
-        position: "absolute",
-        color: "white",
-        fontSize: 12,
-        top: 20,
-        marginTop: localIndex * DEFAULT_MARGIN - 7,
-        marginRight: position === "right" ? 10 : 0,
-        marginLeft: position === "left" ? 10 : 0,
+        paddingLeft: 9
     }
 
     const handleParamStyle = {
         position: "absolute",
         top: 20,
-        marginTop: localIndex * DEFAULT_MARGIN,
+        marginTop: localIndex * 30,
         borderRadius: 15,
         height: 8,
         width: 8,
-        backgroundColor: getHandleColor(),
+        backgroundColor: getHandleColor(parameter.type),
         borderColor: "black",
         borderWidth: 2,
-        marginRight: position === "right" ? DEFAULT_HANDLE_MARGIN : 0,
-        marginLeft: position === "left" ? DEFAULT_HANDLE_MARGIN : 0
+        marginRight: position === "right" ? -1 : 0,
+        marginLeft: position === "left" ? -1 : 0
     }
 
     const handleReturnStyle = {
         height: 8,
         width: 8,
-        backgroundColor: getHandleColor(),
+        backgroundColor: getHandleColor(parameter.type),
         borderColor: "black",
         borderWidth: 2,
-        marginRight: position === "right" ? DEFAULT_HANDLE_MARGIN : 0,
-        marginLeft: position === "left" ? DEFAULT_HANDLE_MARGIN : 0
+        marginRight: position === "right" ? -1 : 0,
+        marginLeft: position === "left" ? -1 : 0
+    }
+
+    const inputStyle = {
+        position: "absolute",
+        top: 20,
+        width: 175,
+        marginTop: localIndex * 30 - 10,
+        color: "white",
+        fontSize: 12,
+        backgroundColor: "#575757",
+        borderRadius: 3,
+        height: 18,
+        border: 0
+    }
+
+    const onChange = (e) => {
+        assignValue(node.id, parameter.name, e.target.value);
+        setParameterValue(e.target.value);
     }
 
     return (
-        <div key={uuid()} style={containerStyle}>
-            {!isFunctionReturn ? <div style={nameStyle}>{parameter.name}</div> : null}
+        <div key={parameter.name} style={containerStyle}>
+            {!isFunctionReturn ?
+                <input
+                    id={`${node.id}-${parameter.name}`}
+                    name={parameter.name}
+                    autoComplete="off"
+                    className="nodrag"
+                    onChange={onChange}
+                    value={parameterValue}
+                    style={inputStyle}
+                    placeholder={parameter.name}
+                    disabled={isReferenced}
+                />
+                :
+                null
+            }
             <Handle
                 id={`${isFunctionReturn ? 'return' : 'param'}-${parameter.name}-${parameter.type}`}
                 type={type}

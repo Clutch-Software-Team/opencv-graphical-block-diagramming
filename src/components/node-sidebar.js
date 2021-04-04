@@ -5,8 +5,8 @@ const NodeSidebar = () => {
 
     const nodes = customNodes;
 
-    const onDragStart = (event, nodeType) => {
-        event.dataTransfer.setData('application/reactflow', nodeType);
+    const onDragStart = (event, node) => {
+        event.dataTransfer.setData('application/reactflow', JSON.stringify(node));
         event.dataTransfer.effectAllowed = 'move';
     };
 
@@ -14,8 +14,8 @@ const NodeSidebar = () => {
         <aside>
             <div className="description">You can drag these nodes to the pane on the right.</div>
 
-            {nodes.map((node) => (
-                <div className={node.className} key={node.key} onDragStart={(event) => onDragStart(event, JSON.stringify(node))} draggable>
+            {nodes.map((node, index) => (
+                <div className={"dndnode"} key={index} onDragStart={(event) => onDragStart(event, node)} draggable>
                     {node.data.functionName}
                 </div>
             ))}

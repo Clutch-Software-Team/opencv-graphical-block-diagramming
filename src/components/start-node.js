@@ -1,5 +1,4 @@
 import React from 'react';
-import uuid from 'react-uuid';
 import CustomHandle from './custom-handle';
 const cv = require("../assets/js/opencv");
 
@@ -12,8 +11,7 @@ const StartNodeComponent = (node) => {
 
     const containerStyle = {
         width: 250,
-        backgroundColor: "#5A5A5A",
-        opacity: 0.8,
+        backgroundColor: "#414141",
         height: 280,
         borderRadius: 5,
         border: node.selected ? "2px solid white" : "2px solid black"
@@ -39,9 +37,9 @@ const StartNodeComponent = (node) => {
     }
 
     const onLoad = () => {
-        let mat = cv.imread(node.id); //input
-        cv.cvtColor(mat, mat, cv.COLOR_RGBA2GRAY); //cvtColor, Gaussion
-        cv.imshow('finish_0', mat); // output
+        let mat = cv.imread(node.id);
+        cv.cvtColor(mat, mat, cv.COLOR_RGBA2GRAY);
+        cv.imshow('finish_0', mat);
         mat.delete();
     }
 
@@ -58,7 +56,8 @@ const StartNodeComponent = (node) => {
                     style={inputStyle}
                 />
                 <CustomHandle
-                    key={uuid()}
+                    key={node.data.returnType}
+                    node={node}
                     parameter={{
                         name: node.data.functionName,
                         type: node.data.returnType

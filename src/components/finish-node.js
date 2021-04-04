@@ -1,14 +1,11 @@
 import React from 'react';
-import { Handle } from 'react-flow-renderer';
-import uuid from 'react-uuid';
 import CustomHandle from './custom-handle';
 
 const FinishNodeComponent = (node) => {
 
     const containerStyle = {
         width: 250,
-        backgroundColor: "#5A5A5A",
-        opacity: 0.8,
+        backgroundColor: "#414141",
         height: 280,
         borderRadius: 5,
         border: node.selected ? "2px solid white" : "2px solid black"
@@ -36,7 +33,8 @@ const FinishNodeComponent = (node) => {
             <div style={titleContainerStyle}>Output</div>
             <div style={innerContainerStyle}>
                 <CustomHandle
-                    key={uuid()}
+                    key={node.data.parameters[0].name}
+                    node={node}
                     parameter={node.data.parameters[0]}
                     position="left"
                     type="target"

@@ -1,30 +1,19 @@
 import React from 'react';
-import uuid from 'react-uuid';
+
 import CustomHandle from './custom-handle';
 
+import getHeaderColor from '../helpers/get-header-color';
+
 const CustomNodeComponent = (node) => {
-
-    const getHeaderColor = (name) => {
-        let colors = [
-            "#488948",
-            "#7B2A31",
-            "#6C5AAD",
-            "#4A87AE",
-            "#9C343E"
-        ]
-
-        return colors[name.length % colors.length]
-    }
 
     let local_index = 0;
 
     const containerStyle = {
         width: 200,
-        backgroundColor: "#5A5A5A",
-        opacity: 0.8,
+        backgroundColor: "#414141",
         height: node.data.parameters.length * 45,
         borderRadius: 5,
-        border: node.selected ? "2px solid white" : "2px solid black"
+        border: node.selected ? "2px solid grey" : "2px solid black"
     }
 
     const titleContainerStyle = {
@@ -36,12 +25,13 @@ const CustomNodeComponent = (node) => {
     return (
         <div style={containerStyle}>
             <div style={titleContainerStyle}>{node.data.functionName}</div>
-            {node.data.parameters.map((parameter, index) => {
+            {node.data.parameters.map((parameter) => {
                 local_index += 1;
                 if (node.data.returnType === "void" && parameter.type === "OutputArray") {
                     return (
                         <CustomHandle
-                            key={uuid()}
+                            key={parameter.name}
+                            node={node}
                             parameter={parameter}
                             position="right"
                             type="source"
@@ -54,7 +44,8 @@ const CustomNodeComponent = (node) => {
                 if (parameter.type !== "OutputArray") {
                     return (
                         <CustomHandle
-                            key={uuid()}
+                            key={parameter.name}
+                            node={node}
                             parameter={parameter}
                             position="left"
                             type="target"
@@ -69,7 +60,8 @@ const CustomNodeComponent = (node) => {
             })}
             {node.data.returnType !== "void" ?
                 <CustomHandle
-                    key={uuid()}
+                    key={node.data.returnType}
+                    node={node}
                     parameter={{
                         name: node.data.functionName,
                         type: node.data.returnType
