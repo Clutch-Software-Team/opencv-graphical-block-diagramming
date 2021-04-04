@@ -1,90 +1,86 @@
 import React from 'react';
-import { Handle } from 'react-flow-renderer';
 import uuid from 'react-uuid';
+import CustomHandle from './custom-handle';
 
 const CustomNodeComponent = (node) => {
 
-    const isValidConnection = (connection) => {
-        if (connection.source === connection.target) {
-            return false;
-        }
+    const getHeaderColor = (name) => {
+        let colors = [
+            "#488948",
+            "#7B2A31",
+            "#6C5AAD",
+            "#4A87AE",
+            "#9C343E"
+        ]
 
-        let sourceType = connection.sourceHandle.split("-")[2];
-        let targetType = connection.targetHandle.split("-")[2];
-
-        if (targetType === sourceType) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return colors[name.length % colors.length]
     }
+
     let local_index = 0;
 
+    const containerStyle = {
+        width: 200,
+        backgroundColor: "#5A5A5A",
+        opacity: 0.8,
+        height: node.data.parameters.length * 45,
+        borderRadius: 5,
+        border: node.selected ? "2px solid white" : "2px solid black"
+    }
+
+    const titleContainerStyle = {
+        padding: 5,
+        color: "white",
+        backgroundColor: getHeaderColor(node.data.functionName)
+    }
+
     return (
-        <div style={{ height: node.data.parameters.length * 30 }}>
+        <div style={containerStyle}>
+            <div style={titleContainerStyle}>{node.data.functionName}</div>
             {node.data.parameters.map((parameter, index) => {
-                if (parameter.type !== "OutputArray") {
-                    local_index += 1;
+                local_index += 1;
+                if (node.data.returnType === "void" && parameter.type === "OutputArray") {
                     return (
-                        <div key={uuid()} style={{ textAlign: "left", marginBottom: -2 }}>
-                            <Handle
-                                key={uuid()}
-                                id={`param-${parameter.name}-${parameter.type}`}
-                                type="target"
-                                position="left"
-                                style={{ top: local_index * 28, borderRadius: 15, height: 7, width: 7 }}
-                                isValidConnection={isValidConnection}
-                            />
-                            <h4 key={uuid()}>{parameter.name} ({parameter.type})</h4>
-                        </div>
+                        <CustomHandle
+                            key={uuid()}
+                            parameter={parameter}
+                            position="right"
+                            type="source"
+                            localIndex={local_index}
+                            isFunctionReturn={false}
+                        />
+                    )
+                }
+
+                if (parameter.type !== "OutputArray") {
+                    return (
+                        <CustomHandle
+                            key={uuid()}
+                            parameter={parameter}
+                            position="left"
+                            type="target"
+                            localIndex={local_index}
+                            isFunctionReturn={false}
+                        />
                     )
                 }
                 else {
                     return null;
                 }
             })}
-            {node.data.parameters.map((parameter) => {
-                if (node.data.returnType === "void") {
-                    if (parameter.type === "OutputArray") {
-                        return (
-                            <div key={uuid()} style={{ textAlign: "right", marginBottom: -2 }}>
-                                <Handle
-                                    key={uuid()}
-                                    id={`param-${parameter.name}-${parameter.type}`}
-                                    type="source"
-                                    position="right"
-                                    style={{ borderRadius: 15, height: 7, width: 7 }}
-                                    isValidConnection={isValidConnection}
-                                />
-                                <h4 key={uuid()}>{parameter.name} ({parameter.type})</h4>
-                            </div>
-                        )
-                    }
-                    else {
-                        return null;
-                    }
-                }
-                else {
-                    return null;
-                }
-            })}
-
             {node.data.returnType !== "void" ?
-                <Handle
-                    id={`return-${node.data.functionName}-${node.data.returnType}`}
-                    type="source"
+                <CustomHandle
+                    key={uuid()}
+                    parameter={{
+                        name: node.data.functionName,
+                        type: node.data.returnType
+                    }}
                     position="right"
-                    style={{ borderRadius: 15, height: 7, width: 7 }}
-                    isValidConnection={isValidConnection}
+                    type="source"
+                    isFunctionReturn={true}
                 />
                 :
                 null
             }
-            <div style={{ marginBottom: 5 }}>
-                {node.data.functionName}
-                <b> {node.data.returnType !== "void" ? `(${node.data.returnType})` : ""}</b>
-            </div>
         </div>
     );
 };

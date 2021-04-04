@@ -6,6 +6,7 @@ const customNodes = [
         data: {
             label: "start",
             functionName: "start",
+            returnType: "InputArray"
         }
     },
     {
@@ -89,8 +90,8 @@ const customNodes = [
             functionName: "cornerHarris",
             returnType: "void",
             parameters: [
-                { name: "src", type: "InputArray", required: true, default: "" },
                 { name: "dst", type: "OutputArray", required: true, default: "" },
+                { name: "src", type: "InputArray", required: true, default: "" },
                 { name: "blockSize", type: "int", required: true, default: "" },
                 { name: "ksize", type: "int", required: true, default: "" },
                 { name: "k", type: "double", required: true, default: "" },
@@ -282,8 +283,9 @@ const customNodes = [
         data: {
             label: "finish",
             functionName: "finish",
+            returnType: "void",
             parameters: [
-                { name: "finish", type: "OutputArray", required: true, default: "" },
+                { name: "dst", type: "OutputArray", required: true, default: "" },
             ]
         }
     },

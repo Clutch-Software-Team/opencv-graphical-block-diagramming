@@ -9,20 +9,22 @@
 }
 
 .dndflow aside {
-    border-right: 1px solid #eee;
+    border-right: 1px solid #4b4a4a;
     padding: 15px 10px;
     font-size: 12px;
-    background: #fcfcfc;
+    background: #5a5a5a;
 }
 
 .dndflow aside .description {
     margin-bottom: 10px;
+    color: white;
 }
 
 .dndflow .dndnode {
     height: 20px;
     padding: 4px;
     border: 1px solid #1a192b;
+    background-color: rgb(168, 164, 164);
     border-radius: 2px;
     margin-bottom: 10px;
     display: flex;
