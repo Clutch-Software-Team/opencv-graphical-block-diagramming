@@ -1,38 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useStoreState } from 'react-flow-renderer';
 
 export const NodeStateContext = React.createContext({
-    nodes: [],
-    assignValue: (params) => { }
+    assignValue: () => { }
 });
 
 export const NodeStateProvider = ({ children }) => {
-    const [nodes, setNodes] = useState([]);
+    const currentNodes = useStoreState((store) => store.nodes);
 
     return (
         <NodeStateContext.Provider value={{
-            nodes: nodes,
-            assignValue: (params) => {
-                let nodes_ = [...nodes]
+            assignValue: (id, name, value) => {
+                let [nodeToBeUpdated] = currentNodes.filter(node => id === node.id);
 
-                for (const parameter of params.node.data.parameters) {
-                    if (parameter.name === params.paramName) {
-                        parameter.currentValue = params.paramValue;
-                        break;
+                let { parameters } = nodeToBeUpdated.data;
+
+                for (const parameter of parameters) {
+                    if (parameter.name === name) {
+                        parameter.currentValue = value;
                     }
-                }
-
-                let filteredArray = nodes_.filter(node => params.node.id === node.id);
-
-                const length = filteredArray.length;
-                const index = nodes_.indexOf(filteredArray[0])
-
-                if (length === 0) {
-                    nodes_.push(params.node);
-                    setNodes(nodes_);
-                }
-                else {
-                    nodes_[index] = params.node;
-                    setNodes(nodes_);
                 }
             }
         }}>
