@@ -10,6 +10,12 @@ import { NodeStateContext } from './provider/node-state-provider';
 import setInputValue from './helpers/set-input-value';
 import getId from './helpers/get-id';
 
+//const cv = require("./assets/js/opencv");
+
+import cv from './assets/js/opencv';
+import {engine_run} from './engine/engine';
+
+
 import './assets/css/dnd.css';
 
 export default function DnDFlow() {
@@ -80,6 +86,7 @@ export default function DnDFlow() {
   const run = () => {
     let _elements = reactFlowInstance.getElements();
     console.log(_elements);
+    engine_run(_elements,cv);
   }
 
   return (

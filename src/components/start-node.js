@@ -36,11 +36,11 @@ const StartNodeComponent = (node) => {
         maxWidth: 200
     }
 
-    const onLoad = () => {
+    const onLoad = () => {/*
         let mat = cv.imread(node.id);
         cv.cvtColor(mat, mat, cv.COLOR_RGBA2GRAY);
         cv.imshow('finish_0', mat);
-        mat.delete();
+        mat.delete();*/
     }
 
     return (

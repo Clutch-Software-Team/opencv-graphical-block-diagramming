@@ -91,8 +91,8 @@ const customNodes = [
             returnType: "void",
             returnValue: null,
             parameters: [
-                { name: "dst", type: "OutputArray", required: true, currentValue: "", default: "" },
                 { name: "src", type: "InputArray", required: true, currentValue: "", default: "" },
+                { name: "dst", type: "OutputArray", required: true, currentValue: "", default: "" },
                 { name: "blockSize", type: "int", required: true, currentValue: "", default: "" },
                 { name: "ksize", type: "int", required: true, currentValue: "", default: "" },
                 { name: "k", type: "double", required: true, currentValue: "", default: "" },
@@ -122,13 +122,15 @@ const customNodes = [
         data: {
             label: "Canny",
             functionName: "Canny",
-            returnType: "uint8(imageMatrixs)",
+            returnType: "void",
             returnValue: null,
             parameters: [
                 { name: "_src", type: "InputArray", required: true, currentValue: "", default: "" },
+                { name: "_dst", type: "OutputArray", required: true, currentValue: "", default: "" },
                 { name: "threshold1", type: "double", required: true, currentValue: "", default: "" },
                 { name: "threshold2", type: "double", required: true, currentValue: "", default: "" },
-                { name: "L2gradient", type: "bool", required: false, currentValue: "", default: "false" },
+                { name: "apertureSize", type: "double", required: true, currentValue: "", default: "" },
+                { name: "L2gradient", type: "bool", required: false, currentValue: "", default: "false" }
             ],
         }
     },
