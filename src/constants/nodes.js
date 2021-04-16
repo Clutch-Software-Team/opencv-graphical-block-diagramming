@@ -27,7 +27,7 @@ const customNodes = [
                 { name: "ksize", type: "int", required: false, currentValue: "", default: 3, values: [1, 3, 5, 7] },
                 { name: "scale", type: "double", required: false, currentValue: "", default: 1 },
                 { name: "delta", type: "double", required: false, currentValue: "", default: 0 },
-                { name: "borderType", type: "int", required: false, currentValue: "", default: 'BORDER_DEFAULT', values: '#BorderTypes' },
+                { name: "borderType", type: "int", required: false, currentValue: "", default: 'cv.BORDER_DEFAULT', values: '#BorderTypes' },
             ]
         }
     },
@@ -42,9 +42,9 @@ const customNodes = [
             parameters: [
                 { name: "src", type: "InputArray", required: true, currentValue: "", default: "" },
                 { name: "dst", type: "OutputArray", required: true, currentValue: "", default: "" },
-                { name: "ksize", type: "Size", required: true, currentValue: "", default: "" },
-                { name: "anchor", type: "Point", required: false, currentValue: "", default: 'Point(-1, 1)' },
-                { name: "borderType", type: "int", required: false, currentValue: "", default: 'BORDER_DEFAULT', values: '#BorderTypes' },
+                { name: "ksize", type: "Size", required: false, currentValue: "", default: "new cv.Size(5, 5)" },
+                { name: "anchor", type: "Point", required: false, currentValue: "", default: 'new cv.Point(-1, -1)' },
+                { name: "borderType", type: "int", required: false, currentValue: "", default: 'cv.BORDER_DEFAULT', values: '#BorderTypes' },
             ]
         }
     },
@@ -59,11 +59,11 @@ const customNodes = [
             parameters: [
                 { name: "src", type: "InputArray", required: true, currentValue: "", default: "" },
                 { name: "dst", type: "OutputArray", required: true, currentValue: "", default: "" },
-                { name: "ddepth", type: "int", required: true, currentValue: "", default: "" },
-                { name: "ksize", type: "Size", required: true, currentValue: "", default: "" },
-                { name: "anchor", type: "Point", required: false, currentValue: "", default: 'Point(-1, 1)' },
+                { name: "ddepth", type: "int", required: false, currentValue: "", default: "-1" },
+                { name: "ksize", type: "Size", required: false, currentValue: "", default: "new cv.Size(5, 5)" },
+                { name: "anchor", type: "Point", required: false, currentValue: "", default: 'new cv.Point(-1, 1)' },
                 { name: "normalize", type: "bool", required: false, currentValue: "", default: true },
-                { name: "borderType", type: "int", required: false, currentValue: "", default: 'BORDER_DEFAULT', values: '#BorderTypes' },
+                { name: "borderType", type: "int", required: false, currentValue: "", default: 'cv.BORDER_DEFAULT', values: '#BorderTypes' },
             ]
         }
     },
@@ -76,8 +76,8 @@ const customNodes = [
             returnType: "double",
             returnValue: null,
             parameters: [
-                { name: "_H1", type: "InputArray", required: true, currentValue: "", default: "" },
-                { name: "_H2", type: "InputArray", required: true, currentValue: "", default: "" },
+                { name: "H1", type: "InputArray", required: true, currentValue: "", default: "" },
+                { name: "H2", type: "InputArray", required: true, currentValue: "", default: "" },
                 { name: "method", type: "int", required: true, currentValue: "", default: "0,1,2,3" }
             ]
         }
@@ -96,7 +96,7 @@ const customNodes = [
                 { name: "blockSize", type: "int", required: true, currentValue: "", default: "" },
                 { name: "ksize", type: "int", required: true, currentValue: "", default: "" },
                 { name: "k", type: "double", required: true, currentValue: "", default: "" },
-                { name: "borderType", type: "int", required: false, currentValue: "", default: "BORDER_DEFAULT" }
+                { name: "borderType", type: "int", required: false, currentValue: "", default: "cv.BORDER_DEFAULT" }
             ]
         }
     },
@@ -109,8 +109,8 @@ const customNodes = [
             returnType: "void",
             returnValue: null,
             parameters: [
-                { name: "_src", type: "InputArray", required: true, currentValue: "", default: "" },
-                { name: "_dst", type: "OutputArray", required: true, currentValue: "", default: "" },
+                { name: "src", type: "InputArray", required: true, currentValue: "", default: "" },
+                { name: "dst", type: "OutputArray", required: true, currentValue: "", default: "" },
                 { name: "code", type: "int", required: true, currentValue: "", default: "" },
                 { name: "dcn", type: "int", required: false, currentValue: "", default: "0" }
             ]
@@ -125,11 +125,11 @@ const customNodes = [
             returnType: "void",
             returnValue: null,
             parameters: [
-                { name: "_src", type: "InputArray", required: true, currentValue: "", default: "" },
-                { name: "_dst", type: "OutputArray", required: true, currentValue: "", default: "" },
-                { name: "threshold1", type: "double", required: true, currentValue: "", default: "" },
-                { name: "threshold2", type: "double", required: true, currentValue: "", default: "" },
-                { name: "apertureSize", type: "double", required: true, currentValue: "", default: "" },
+                { name: "src", type: "InputArray", required: true, currentValue: "", default: "" },
+                { name: "dst", type: "OutputArray", required: true, currentValue: "", default: "" },
+                { name: "threshold1", type: "double", required: false, currentValue: "", default: "50" },
+                { name: "threshold2", type: "double", required: false, currentValue: "", default: "100" },
+                { name: "apertureSize", type: "double", required: false, currentValue: "", default: "3" },
                 { name: "L2gradient", type: "bool", required: false, currentValue: "", default: "false" }
             ],
         }
@@ -140,15 +140,15 @@ const customNodes = [
         data: {
             label: "GaussianBlur",
             functionName: "GaussianBlur",
-            returnType: "imageMatrix",
+            returnType: "void",
             returnValue: null,
             parameters: [
-                { name: "_src", type: "InputArray", required: true, currentValue: "", default: "" },
-                { name: "destinationImage", type: "OutputArray", required: true, currentValue: "", default: "" },
-                { name: "kernelMatrix", type: "size", required: true, currentValue: "", default: "" },
-                { name: "sigmaX,", type: "double", required: false, currentValue: "", default: "" },
+                { name: "src", type: "InputArray", required: true, currentValue: "", default: "" },
+                { name: "dst", type: "OutputArray", required: true, currentValue: "", default: "" },
+                { name: "kernelMatrix", type: "size", required: false, currentValue: "", default: "new cv.Size(5, 5)" },
+                { name: "sigmaX,", type: "double", required: false, currentValue: "", default: "0" },
                 { name: "sigmaY", type: "double", required: false, currentValue: "", default: "0" },
-                { name: "borderType", type: "int", required: false, currentValue: "", default: "BORDER_DEFAULT" }
+                { name: "borderType", type: "int", required: false, currentValue: "", default: "cv.BORDER_DEFAULT" }
             ],
         }
     },
@@ -158,15 +158,16 @@ const customNodes = [
         data: {
             label: "Laplacian",
             functionName: "Laplacian",
-            returnType: "imageMatrix",
+            returnType: "void",
             returnValue: null,
             parameters: [
                 { name: "src", type: "InputArray", required: true, currentValue: "", default: "" },
-                { name: "destination", type: "OutpuArray", required: true, currentValue: "", default: "" },
-                { name: "KernelMatrix", type: "Size", required: true, currentValue: "", default: "" },
-                { name: "scale", type: "double", required: false, currentValue: "", default: true },
+                { name: "dst", type: "OutputArray", required: true, currentValue: "", default: "" },
+                { name: "ddepth", type: "int", required: false, currentValue: "", default: "-1" },
+                { name: "ksize", type: "Size", required: false, currentValue: "", default: "1" },
+                { name: "scale", type: "double", required: false, currentValue: "", default: "1" },
                 { name: "delta", type: "double", required: false, currentValue: "", default: "0" },
-                { name: "borderType", type: "int", required: false, currentValue: "", default: "BORDER_DEFAULT" }
+                { name: "borderType", type: "int", required: false, currentValue: "", default: "cv.BORDER_DEFAULT" }
             ],
         }
     },
@@ -183,7 +184,7 @@ const customNodes = [
                 { name: "contours", type: "OutputArrayOfArrays", required: true, currentValue: "", default: "" },
                 { name: "mode", type: "int", required: true, currentValue: "", default: "", values: ["RETR_EXTERNAL", "RETR_LIST", "RETR_CCOMP", "RETR_TREE", "RETR_FLOODFILL"] },
                 { name: "method", type: "int", required: true, currentValue: "", default: "", values: ["CHAIN_APPROX_NONE", "CHAIN_APPROX_SIMPLE", "CHAIN_APPROX_TC89_L1", "CHAIN_APPROX_TC89_KCOS"] },
-                { name: "offset", type: "Point", required: false, currentValue: "", default: "Point()" }
+                { name: "offset", type: "Point", required: false, currentValue: "", default: "cv.Point()" }
             ]
         }
     },
@@ -193,16 +194,16 @@ const customNodes = [
         data: {
             label: "filter2D",
             functionName: "filter2D",
-            returnType: "OutputArray",
+            returnType: "void",
             returnValue: null,
             parameters: [
                 { name: "src", type: "InputArray", required: true, currentValue: "", default: "" },
                 { name: "dst", type: "OutputArray", required: true, currentValue: "", default: "" },
-                { name: "ddepth", type: "int", required: true, currentValue: "", default: "", values: ["CV_8U", "CV_16U", "CV_16S", "CV_32F", "CV_64F", "-1"] },
-                { name: "kernel", type: "InputArray", required: true, currentValue: "", default: "" },
-                { name: "anchor", type: "Point", required: false, currentValue: "", default: "Point(-1,-1)", values: ["CHAIN_APPROX_NONE", "CHAIN_APPROX_SIMPLE", "CHAIN_APPROX_TC89_L1", "CHAIN_APPROX_TC89_KCOS"] },
+                { name: "ddepth", type: "int", required: false, currentValue: "", default: "cv.CV_8U", values: ["cv.CV_8U", "cv.CV_16U", "cv.CV_16S", "cv.CV_32F", "cv.CV_64F", "-1"] },
+                { name: "kernel", type: "InputArray", required: false, currentValue: "", default: "cv.Mat.eye(3, 3, cv.CV_32FC1)" },
+                { name: "anchor", type: "Point", required: false, currentValue: "", default: "new cv.Point(-1,-1)", values: ["CHAIN_APPROX_NONE", "CHAIN_APPROX_SIMPLE", "CHAIN_APPROX_TC89_L1", "CHAIN_APPROX_TC89_KCOS"] },
                 { name: "delta", type: "double", required: false, currentValue: "", default: "0" },
-                { name: "borderType", type: "int", required: false, currentValue: "", default: "BORDER_DEFAULT", values: ["BORDER_CONSTANT", "BORDER_REPLICATE", "BORDER_REFLECT", "BORDER_REFLECT_101", "BORDER_TRANSPARENT", "BORDER_REFLECT101", "BORDER_DEFAULT", "BORDER_ISOLATED"] }
+                { name: "borderType", type: "int", required: false, currentValue: "", default: "cv.BORDER_DEFAULT", values: ["BORDER_CONSTANT", "BORDER_REPLICATE", "BORDER_REFLECT", "BORDER_REFLECT_101", "BORDER_TRANSPARENT", "BORDER_REFLECT101", "BORDER_DEFAULT", "BORDER_ISOLATED"] }
             ]
         }
     },
@@ -212,14 +213,14 @@ const customNodes = [
         data: {
             label: "distanceTransform",
             functionName: "distanceTransform",
-            returnType: "OutputArray",
+            returnType: "void",
             returnValue: null,
             parameters: [
                 { name: "src", type: "InputArray", required: true, currentValue: "", default: "" },
                 { name: "dst", type: "OutputArray", required: true, currentValue: "", default: "" },
-                { name: "distanceType", type: "int", required: true, currentValue: "", default: "", values: ["DIST_USER", "DIST_L1", "DIST_L2", "DIST_C", "DIST_L12", "DIST_FAIR", "DIST_WELSCH", "DIST_HUBER"] },
-                { name: "maskSize", type: "int", required: true, currentValue: "", default: "", values: ["DIST_MASK_3", "DIST_MASK_5"] },
-                { name: "dstType", type: "int", required: false, currentValue: "", default: "CV_32F", values: ["CV_32F", "CV_8U"] }
+                { name: "distanceType", type: "int", required: false, currentValue: "", default: "cv.DIST_L2", values: ["cv.DIST_USER", "cv.DIST_L1", "cv.DIST_L2", "cv.DIST_C", "cv.DIST_L12", "cv.DIST_FAIR", "cv.DIST_WELSCH", "cv.DIST_HUBER"] },
+                { name: "maskSize", type: "int", required: false, currentValue: "", default: "cv.DIST_MASK_5", values: ["cv.DIST_MASK_3", "cv.DIST_MASK_5"] },
+                { name: "dstType", type: "int", required: false, currentValue: "", default: "cv.CV_32F", values: ["CV_32F", "CV_8U"] }
             ]
         }
     },
@@ -252,9 +253,9 @@ const customNodes = [
             returnType: "void",
             returnValue: null,
             parameters: [
-                { name: "_src", type: "const Mat&", required: true, currentValue: "", default: "" },
-                { name: "_dst", type: "Mat&", required: false, currentValue: "", default: "" },
-                { name: "ksize", type: "int", required: true, currentValue: "", default: "" }
+                { name: "_src", type: "InputArray", required: true, currentValue: "", default: "" },
+                { name: "_dst", type: "OutputArray", required: false, currentValue: "", default: "" },
+                { name: "ksize", type: "int", required: false, currentValue: "", default: "5" }
             ]
         }
     },
@@ -267,7 +268,7 @@ const customNodes = [
             returnType: "void",
             returnValue: null,
             parameters: [
-                { name: "img", type: "Mat&", required: true, currentValue: "", default: "" },
+                { name: "img", type: "InputArray", required: true, currentValue: "", default: "" },
                 { name: "text", type: "const string&", required: true, currentValue: "", default: "" },
                 { name: "org", type: "Point", required: false, currentValue: "", default: "" },
                 { name: "font", type: "int", required: true, currentValue: "", default: "FONT_HERSHEY_PLAIN" },
