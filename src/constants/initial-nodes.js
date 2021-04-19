@@ -6,7 +6,7 @@ const initialNodes = [
         data: {
             label: "start",
             functionName: "start",
-            returnType: "InputArray",
+            returnType: "Mat",
             returnValue: null,
             parameters: []
         },
@@ -23,7 +23,7 @@ const initialNodes = [
             returnType: "void",
             returnValue: null,
             parameters: [
-                { name: "dst", type: "OutputArray", required: true, currentValue: "", default: "" },
+                { name: "dst", type: "Mat", required: true, currentValue: "", default: "" },
             ]
         },
         position: { x: 1220, y: 300 },

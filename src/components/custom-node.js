@@ -27,7 +27,7 @@ const CustomNodeComponent = (node) => {
             <div style={titleContainerStyle}>{node.data.functionName}</div>
             {node.data.parameters.map((parameter) => {
                 local_index += 1;
-                if (node.data.returnType === "void" && parameter.type === "OutputArray") {
+                if (node.data.returnType === "void" && parameter.type === "Mat" && parameter.name === "dst") {
                     return (
                         <CustomHandle
                             key={parameter.name}
@@ -41,7 +41,7 @@ const CustomNodeComponent = (node) => {
                     )
                 }
 
-                if (parameter.type !== "OutputArray") {
+                if (parameter.type !== "Mat" || parameter.name === "src") {
                     return (
                         <CustomHandle
                             key={parameter.name}
