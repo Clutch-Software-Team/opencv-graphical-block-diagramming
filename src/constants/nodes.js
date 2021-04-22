@@ -21,13 +21,48 @@ const customNodes = [
             parameters: [
                 { name: "src", type: "Mat", required: true, currentValue: "", default: "" },
                 { name: "dst", type: "Mat", required: true, currentValue: "", default: "" },
-                { name: "ddepth", type: "int", required: true, currentValue: "", default: "" },
-                { name: "dx", type: "int", required: true, currentValue: "", default: "" },
-                { name: "dy", type: "int", required: true, currentValue: "", default: "" },
+                { name: "ddepth", type: "int", required: false, currentValue: "", default: "cv.CV_8U" },
+                { name: "dx", type: "int", required: false, currentValue: "", default: "1" },
+                { name: "dy", type: "int", required: false, currentValue: "", default: "0" },
                 { name: "ksize", type: "int", required: false, currentValue: "", default: 3, values: [1, 3, 5, 7] },
                 { name: "scale", type: "double", required: false, currentValue: "", default: 1 },
                 { name: "delta", type: "double", required: false, currentValue: "", default: 0 },
                 { name: "borderType", type: "int", required: false, currentValue: "", default: 'cv.BORDER_DEFAULT', values: '#BorderTypes' },
+            ]
+        }
+    },
+    {
+        type: "custom",
+        isExecuted: false,
+        data: {
+            label: "normalize",
+            functionName: "normalize",
+            returnType: "void",
+            returnValue: null,
+            parameters: [
+                { name: "src", type: "Mat", required: true, currentValue: "", default: "" },
+                { name: "dst", type: "Mat", required: true, currentValue: "", default: "" },
+                { name: "alpha", type: "double", required: false, currentValue: "", default: 1 },
+                { name: "beta", type: "double", required: false, currentValue: "", default: 0 },
+                { name: "norm_type", type: "int", required: false, currentValue: "", default: "cv.NORM_L2" },
+                { name: "dtype", type: "int", required: false, currentValue: "", default: "-1" },
+                { name: "mask", type: "Mat", required: false, currentValue: "", default: "new cv.Mat()" }
+            ]
+        }
+    },
+    {
+        type: "custom",
+        isExecuted: false,
+        data: {
+            label: "convertScaleAbs",
+            functionName: "convertScaleAbs",
+            returnType: "void",
+            returnValue: null,
+            parameters: [
+                { name: "src", type: "Mat", required: true, currentValue: "", default: "" },
+                { name: "dst", type: "Mat", required: true, currentValue: "", default: "" },
+                { name: "alpha", type: "double", required: false, currentValue: "", default: 1 },
+                { name: "beta", type: "double", required: false, currentValue: "", default: 0 }
             ]
         }
     },
@@ -93,9 +128,9 @@ const customNodes = [
             parameters: [
                 { name: "src", type: "Mat", required: true, currentValue: "", default: "" },
                 { name: "dst", type: "Mat", required: true, currentValue: "", default: "" },
-                { name: "blockSize", type: "int", required: true, currentValue: "", default: "" },
-                { name: "ksize", type: "int", required: true, currentValue: "", default: "" },
-                { name: "k", type: "double", required: true, currentValue: "", default: "" },
+                { name: "blockSize", type: "int", required: false, currentValue: "", default: "2" },
+                { name: "ksize", type: "int", required: false, currentValue: "", default: "3" },
+                { name: "k", type: "double", required: false, currentValue: "", default: "0.04" },
                 { name: "borderType", type: "int", required: false, currentValue: "", default: "cv.BORDER_DEFAULT" }
             ]
         }
@@ -111,7 +146,7 @@ const customNodes = [
             parameters: [
                 { name: "src", type: "Mat", required: true, currentValue: "", default: "" },
                 { name: "dst", type: "Mat", required: true, currentValue: "", default: "" },
-                { name: "code", type: "int", required: true, currentValue: "", default: "" },
+                { name: "code", type: "int", required: false, currentValue: "", default: "cv.COLOR_RGB2GRAY" },
                 { name: "dcn", type: "int", required: false, currentValue: "", default: "0" }
             ]
         }
