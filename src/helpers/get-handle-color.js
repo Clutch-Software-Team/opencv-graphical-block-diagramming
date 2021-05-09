@@ -1,19 +1,22 @@
 const getHandleColor = (type) => {
     switch (type) {
-        case 'InputArray':
-            return "yellow"
-
-        case 'OutputArray':
-            return "purple"
+        case 'Mat':
+            return 'yellow'
 
         case 'void':
-            return "blue"
+            return 'blue'
 
         case 'double':
-            return "red"
+            return 'red'
+
+        case 'int':
+            return 'green'
+
+        case 'bool':
+            return 'orange'
 
         default:
-            return "gray"
+            return 'gray'
     }
 }
 

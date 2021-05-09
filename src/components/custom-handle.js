@@ -14,6 +14,7 @@ const CustomHandle = (props) => {
 
     const { node, parameter, isFunctionReturn, position, localIndex, type } = props;
 
+    const [isSelect, setIsSelect] = useState(parameter?.choices?.length > 0);
 
     useEffect(() => {
         if (parameterValue.startsWith("ref:")) {
@@ -71,17 +72,28 @@ const CustomHandle = (props) => {
     return (
         <div key={parameter.name} style={containerStyle}>
             {!isFunctionReturn ?
-                <input
-                    id={`${node.id}-${parameter.name}`}
-                    name={parameter.name}
-                    autoComplete="off"
-                    className="nodrag"
-                    onChange={onChange}
-                    value={parameterValue}
-                    style={inputStyle}
-                    placeholder={parameter.name}
-                    disabled={isReferenced}
-                />
+                !isSelect ?
+                    <input
+                        id={`${node.id}-${parameter.name}`}
+                        name={parameter.name}
+                        autoComplete="off"
+                        className="nodrag"
+                        onChange={onChange}
+                        value={parameterValue}
+                        style={inputStyle}
+                        placeholder={parameter.name}
+                        disabled={isReferenced || parameter.name == 'dst'}
+                    />
+                    :
+                    <select
+                        style={inputStyle}
+                        onChange={onChange}
+                    >
+                        <option value="" hidden>Select a Value</option>
+                        {parameter.choices.map((choice, index) => (
+                            <option key={parameter.name + index} value={choice}>{choice}</option>
+                        ))}
+                    </select>
                 :
                 null
             }

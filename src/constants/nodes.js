@@ -146,7 +146,7 @@ const customNodes = [
             parameters: [
                 { name: "src", type: "Mat", required: true, currentValue: "", default: "" },
                 { name: "dst", type: "Mat", required: true, currentValue: "", default: "" },
-                { name: "code", type: "int", required: false, currentValue: "", default: "cv.COLOR_RGB2GRAY" },
+                { name: "code", type: "int", required: false, currentValue: "", default: "cv.COLOR_RGB2GRAY", choices: ["cv.COLOR_RGB2GRAY", "cv.COLOR_RGB2RGBA"] },
                 { name: "dcn", type: "int", required: false, currentValue: "", default: "0" }
             ]
         }
