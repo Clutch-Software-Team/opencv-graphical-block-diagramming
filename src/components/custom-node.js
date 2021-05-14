@@ -25,40 +25,18 @@ const CustomNodeComponent = (node) => {
     return (
         <div style={containerStyle}>
             <div style={titleContainerStyle}>{node.data.functionName}</div>
-            {node.data.parameters.map((parameter) => {
-                local_index += 1;
-                if (node.data.returnType === "void" && parameter.type === "Mat" && parameter.name === "dst") {
-                    return (
-                        <CustomHandle
-                            key={parameter.name}
-                            node={node}
-                            parameter={parameter}
-                            position="right"
-                            type="source"
-                            localIndex={local_index}
-                            isFunctionReturn={false}
-                        />
-                    )
-                }
+            {node.data.parameters.map((parameter, index) => (
+                <CustomHandle
+                    key={parameter.name}
+                    node={node}
+                    parameter={parameter}
+                    position={parameter.isOutput ? "right" : "left"}
+                    type={parameter.isOutput ? "source" : "target"}
+                    localIndex={index + 1}
+                />
+            ))}
 
-                if (parameter.type !== "Mat" || parameter.name === "src") {
-                    return (
-                        <CustomHandle
-                            key={parameter.name}
-                            node={node}
-                            parameter={parameter}
-                            position="left"
-                            type="target"
-                            localIndex={local_index}
-                            isFunctionReturn={false}
-                        />
-                    )
-                }
-                else {
-                    return null;
-                }
-            })}
-            {node.data.returnType !== "void" ?
+            {node.data.returnType !== "void" &&
                 <CustomHandle
                     key={node.data.returnType}
                     node={node}
@@ -70,8 +48,6 @@ const CustomNodeComponent = (node) => {
                     type="source"
                     isFunctionReturn={true}
                 />
-                :
-                null
             }
         </div>
     );

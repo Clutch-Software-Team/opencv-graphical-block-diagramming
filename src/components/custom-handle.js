@@ -12,7 +12,7 @@ const CustomHandle = (props) => {
 
     const { assignValue } = useContext(NodeStateContext);
 
-    const { node, parameter, isFunctionReturn, position, localIndex, type } = props;
+    const { node, parameter, isFunctionReturn = false, position, localIndex, type } = props;
 
     const [isSelect, setIsSelect] = useState(parameter?.choices?.length > 0);
 
