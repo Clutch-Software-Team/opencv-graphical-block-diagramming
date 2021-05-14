@@ -3,24 +3,30 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Handle } from 'react-flow-renderer';
 import getHandleColor from '../helpers/get-handle-color';
+import getInputType from '../helpers/get-input-type';
 import isValidConnection from '../helpers/is-valid-connection';
 import { NodeStateContext } from '../provider/node-state-provider';
 
 const CustomHandle = (props) => {
     const [parameterValue, setParameterValue] = useState("");
     const [isReferenced, setIsReferenced] = useState(false);
-
     const { assignValue } = useContext(NodeStateContext);
 
     const { node, parameter, isFunctionReturn = false, position, localIndex, type } = props;
 
     const [isSelect, setIsSelect] = useState(parameter?.choices?.length > 0);
+    const [inputType, setInputType] = useState("text")
 
     useEffect(() => {
         if (parameterValue.startsWith("ref:")) {
             setIsReferenced(true);
         }
     }, [parameterValue])
+
+    useEffect(() => {
+        let type_ = getInputType(parameter.type);
+        setInputType(type_);
+    }, [parameter, parameter.type])
 
     const containerStyle = {
         display: "flex",
@@ -76,6 +82,7 @@ const CustomHandle = (props) => {
                     <input
                         id={`${node.id}-${parameter.name}`}
                         name={parameter.name}
+                        type={inputType}
                         autoComplete="off"
                         className="nodrag"
                         onChange={onChange}
