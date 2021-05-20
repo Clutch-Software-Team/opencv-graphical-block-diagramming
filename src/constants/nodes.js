@@ -217,8 +217,8 @@ const customNodes = [
             parameters: [
                 { name: "image", type: "Mat", isOutput: false, required: true, currentValue: "", default: "" },
                 { name: "contours", type: "MatOfArrays", isOutput: false, required: true, currentValue: "", default: "" },
-                { name: "mode", type: "int", isOutput: false, required: true, currentValue: "", default: "", values: ["RETR_EXTERNAL", "RETR_LIST", "RETR_CCOMP", "RETR_TREE", "RETR_FLOODFILL"] },
-                { name: "method", type: "int", isOutput: false, required: true, currentValue: "", default: "", values: ["CHAIN_APPROX_NONE", "CHAIN_APPROX_SIMPLE", "CHAIN_APPROX_TC89_L1", "CHAIN_APPROX_TC89_KCOS"] },
+                { name: "mode", type: "int", isOutput: false, required: true, currentValue: "", default: "", choices: ["RETR_EXTERNAL", "RETR_LIST", "RETR_CCOMP", "RETR_TREE", "RETR_FLOODFILL"] },
+                { name: "method", type: "int", isOutput: false, required: true, currentValue: "", default: "", choices: ["CHAIN_APPROX_NONE", "CHAIN_APPROX_SIMPLE", "CHAIN_APPROX_TC89_L1", "CHAIN_APPROX_TC89_KCOS"] },
                 { name: "offset", type: "Point", isOutput: false, required: false, currentValue: "", default: "cv.Point()" }
             ]
         }
@@ -234,11 +234,11 @@ const customNodes = [
             parameters: [
                 { name: "src", type: "Mat", isOutput: false, required: true, currentValue: "", default: "" },
                 { name: "dst", type: "Mat", isOutput: true, required: true, currentValue: "", default: "" },
-                { name: "ddepth", type: "int", isOutput: false, required: false, currentValue: "", default: "cv.CV_8U", values: ["cv.CV_8U", "cv.CV_16U", "cv.CV_16S", "cv.CV_32F", "cv.CV_64F", "-1"] },
+                { name: "ddepth", type: "int", isOutput: false, required: false, currentValue: "", default: "cv.CV_8U", choices: ["cv.CV_8U", "cv.CV_16U", "cv.CV_16S", "cv.CV_32F", "cv.CV_64F", "-1"] },
                 { name: "kernel", type: "Mat", isOutput: false, required: false, currentValue: "", default: "cv.Mat.eye(3, 3, cv.CV_32FC1)" },
-                { name: "anchor", type: "Point", isOutput: false, required: false, currentValue: "", default: "new cv.Point(-1,-1)", values: ["CHAIN_APPROX_NONE", "CHAIN_APPROX_SIMPLE", "CHAIN_APPROX_TC89_L1", "CHAIN_APPROX_TC89_KCOS"] },
+                { name: "anchor", type: "Point", isOutput: false, required: false, currentValue: "", default: "new cv.Point(-1,-1)", choices: ["CHAIN_APPROX_NONE", "CHAIN_APPROX_SIMPLE", "CHAIN_APPROX_TC89_L1", "CHAIN_APPROX_TC89_KCOS"] },
                 { name: "delta", type: "double", isOutput: false, required: false, currentValue: "", default: "0" },
-                { name: "borderType", type: "int", isOutput: false, required: false, currentValue: "", default: "cv.BORDER_DEFAULT", values: ["BORDER_CONSTANT", "BORDER_REPLICATE", "BORDER_REFLECT", "BORDER_REFLECT_101", "BORDER_TRANSPARENT", "BORDER_REFLECT101", "BORDER_DEFAULT", "BORDER_ISOLATED"] }
+                { name: "borderType", type: "int", isOutput: false, required: false, currentValue: "", default: "cv.BORDER_DEFAULT", choices: ["BORDER_CONSTANT", "BORDER_REPLICATE", "BORDER_REFLECT", "BORDER_REFLECT_101", "BORDER_TRANSPARENT", "BORDER_REFLECT101", "BORDER_DEFAULT", "BORDER_ISOLATED"] }
             ]
         }
     },
@@ -253,9 +253,9 @@ const customNodes = [
             parameters: [
                 { name: "src", type: "Mat", isOutput: false, required: true, currentValue: "", default: "" },
                 { name: "dst", type: "Mat", isOutput: true, required: true, currentValue: "", default: "" },
-                { name: "distanceType", type: "int", isOutput: false, required: false, currentValue: "", default: "cv.DIST_L2", values: ["cv.DIST_USER", "cv.DIST_L1", "cv.DIST_L2", "cv.DIST_C", "cv.DIST_L12", "cv.DIST_FAIR", "cv.DIST_WELSCH", "cv.DIST_HUBER"] },
-                { name: "maskSize", type: "int", isOutput: false, required: false, currentValue: "", default: "cv.DIST_MASK_5", values: ["cv.DIST_MASK_3", "cv.DIST_MASK_5"] },
-                { name: "dstType", type: "int", isOutput: false, required: false, currentValue: "", default: "cv.CV_32F", values: ["CV_32F", "CV_8U"] }
+                { name: "distanceType", type: "int", isOutput: false, required: false, currentValue: "", default: "cv.DIST_L2", choices: ["cv.DIST_USER", "cv.DIST_L1", "cv.DIST_L2", "cv.DIST_C", "cv.DIST_L12", "cv.DIST_FAIR", "cv.DIST_WELSCH", "cv.DIST_HUBER"] },
+                { name: "maskSize", type: "int", isOutput: false, required: false, currentValue: "", default: "cv.DIST_MASK_5", choices: ["cv.DIST_MASK_3", "cv.DIST_MASK_5"] },
+                { name: "dstType", type: "int", isOutput: false, required: false, currentValue: "", default: "cv.CV_32F", choices: ["CV_32F", "CV_8U"] }
             ]
         }
     },
@@ -306,11 +306,11 @@ const customNodes = [
                 { name: "img", type: "Mat", isOutput: false, required: true, currentValue: "", default: "" },
                 { name: "text", type: "const string&", isOutput: false, required: true, currentValue: "", default: "" },
                 { name: "org", type: "Point", isOutput: false, required: false, currentValue: "", default: "" },
-                { name: "font", type: "int", isOutput: false, required: true, currentValue: "", default: "FONT_HERSHEY_PLAIN" },
+                { name: "font", type: "int", isOutput: false, required: true, currentValue: "", default: "FONT_HERSHEY_PLAIN", choices: ["FONT_HERSHEY_SIMPLEX", "FONT_HERSHEY_PLAIN","FONT_HERSHEY_DUPLEX","FONT_HERSHEY_COMPLEX","FONT_HERSHEY_TRIPLEX","FONT_HERSHEY_COMPLEX_SMALL","FONT_HERSHEY_SCRIPT_SIMPLEX","FONT_HERSHEY_SCRIPT_COMPLEX","FONT_ITALIC"]},
                 { name: "fontScale", type: "double", isOutput: false, required: true, currentValue: "", default: "" },
                 { name: "color", type: "scalar", isOutput: false, required: true, currentValue: "", default: "" },
                 { name: "thickness", type: "int", isOutput: false, required: false, currentValue: "", default: true },
-                { name: "lineType", type: "int", isOutput: false, required: true, currentValue: "", default: "8" },
+                { name: "lineType", type: "int", isOutput: false, required: true, currentValue: "", default: "8", choices:["FILLED","LINE_4","LINE_8","LINE_AA"]},
                 { name: "bottomLeftOrigin", type: "bool", isOutput: false, required: true, currentValue: "", default: "false" }
             ]
         }
