@@ -14,6 +14,9 @@ import { NodeStateContext } from "./provider/node-state-provider";
 import setInputValue from "./helpers/set-input-value";
 import getId from "./helpers/get-id";
 
+import pyLogo from "./assets/file.png"
+import ocrLogo from "./assets/ocr.png"
+
 //const cv = require("./assets/js/opencv");
 
 import cv from "./assets/js/opencv";
@@ -94,10 +97,19 @@ export default function DnDFlow() {
   return (
     <div className="dndflow">
       <NodeSidebar />
+      
       <div className="reactflow-wrapper" ref={reactFlowWrapper}>
+      <div style={{display:"flex"}}>
+        <span style={{ zIndex:5, position:"absolute",bottom:"20px",right:"20px", cursor:"pointer"}} title="Python Format">
+         <img src={pyLogo} alt="myimage" style={{height:"50px",width:"50px"}} />
+        </span>
+        <span style={{ zIndex:5, position:"absolute",bottom:"20px",right:"90px", cursor:"pointer"}}  title="OCR Format">
+         <img src={ocrLogo} alt="myimage" style={{height:"50px",width:"50px"}}   />
+        </span>
         <button className="run_btn" onClick={run}>
           Run
         </button>
+        </div>
         <ReactFlow
           nodeTypes={nodeTypes}
           elements={elements}

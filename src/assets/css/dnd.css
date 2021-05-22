@@ -1,3 +1,8 @@
+.description{
+  text-align: center;
+  font-size: 17px;
+}
+
 .reactflow-wrapper {
   height: 100vh !important;
 }
@@ -5,8 +10,7 @@
 .dndflow {
   flex-direction: column;
   display: flex;
-  height: 100%;
-
+  height: 100vh;
 }
 
 .dndflow aside {
@@ -14,7 +18,7 @@
   padding: 15px 10px;
   font-size: 12px;
   background: #5a5a5a;
-
+  overflow: scroll;
 }
 
 .dndflow aside .description {
@@ -23,12 +27,11 @@
 }
 
 .dndflow .dndnode {
-  
   height: 20px;
   padding: 4px;
   border: 1px solid #1a192b;
   background-color: rgb(168, 164, 164);
-  border-radius: 2px;
+  border-radius: 10px;
   margin-bottom: 10px;
   display: flex;
   justify-content: center;
@@ -57,4 +60,40 @@
   margin-right: 20px;
   margin-top: 20px;
   z-index: 999;
+}
+
+.python_btn {
+  position: absolute;
+  right: 0;
+  margin-right: 20px;
+  bottom: 20px;
+  z-index: 999;
+}
+
+.ocr_btn {
+  position: absolute;
+  right: 0;
+  margin-right: 140px;
+  bottom: 20px;
+  z-index: 999;
+}
+
+button {
+  border: none;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+  color: #000;
+  width: 110px;
+  height: 45px;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 700;
+  background-color: #fff;
+}
+
+button:hover {
+  background-color: gray;
 }
