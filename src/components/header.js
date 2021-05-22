@@ -1,5 +1,5 @@
 import "../assets/css/header.css";
-import logo from "../assets/lilyumLogo2.png";
+import logo from "../assets/logo.png";
 const Header = () => {
   return (
     <header className="headerMenu">
@@ -16,7 +16,7 @@ const Header = () => {
             alt="clutch-icon"
             style={{ height: "55px", width: "75px" }}
           />
-          <p style={{ marginLeft: "10px" }}>Lilyum</p>
+          <span style={{ marginLeft: "10px",fontSize:"25px",marginTop:"10px" }}><b>Lilyum</b></span>
         </div>
         <div className="routerContainer">
           <a className="aTag">Documentation</a>

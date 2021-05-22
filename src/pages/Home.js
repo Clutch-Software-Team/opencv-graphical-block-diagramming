@@ -23,10 +23,17 @@ const Home = () => {
                 Do your image processing ideas with
               </span>
               <span className="slogan">
-                Clutch Software <b>LILYUM</b>
+                Clutch Software  
               </span>
+              <span className="slogan">
+              <b>LILYUM</b>
+              </span>
+              <br />
               <span style={{ color: "gray" }}>
-                opencv-graphical-block-diagramming
+              Lilyum, OpenCV block diagram is an open-source application for developers 
+              </span> 
+              <span style={{ color: "gray" }}> 
+                students and anyone who wants to learn image processing.
               </span>
               <div
                 style={{
@@ -48,9 +55,9 @@ const Home = () => {
             style={{
               height: "400px",
               width: "100%",
-              backgroundColor: "#e84545",
+              backgroundColor: "#320838",
             }}
-          ></div>
+          ><p style={{color:"white"}}>asdadasdasdas</p></div>
         </div>
       </div>
     </>
