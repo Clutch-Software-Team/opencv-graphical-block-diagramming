@@ -16,6 +16,7 @@ import getId from "./helpers/get-id";
 
 import pyLogo from "./assets/file.png"
 import ocrLogo from "./assets/ocr.png"
+import backLogo from "./assets/back.png"
 
 //const cv = require("./assets/js/opencv");
 
@@ -94,12 +95,18 @@ export default function DnDFlow() {
     engine_run(_elements, cv);
   };
 
+
   return (
     <div className="dndflow">
       <NodeSidebar />
       
       <div className="reactflow-wrapper" ref={reactFlowWrapper}>
       <div style={{display:"flex"}}>
+
+        <span style={{ zIndex:5, position:"absolute",top:"20px", cursor:"pointer"}} title="Python Format">
+         <a href="/"><img src={backLogo} alt="myimage" style={{height:"50px",width:"50px"}} /></a>
+        </span>
+
         <span style={{ zIndex:5, position:"absolute",bottom:"20px",right:"20px", cursor:"pointer"}} title="Python Format">
          <img src={pyLogo} alt="myimage" style={{height:"50px",width:"50px"}} />
         </span>
