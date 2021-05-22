@@ -1,57 +1,60 @@
 .reactflow-wrapper {
-    height: 100vh !important;
+  height: 100vh !important;
 }
 
 .dndflow {
-    flex-direction: column;
-    display: flex;
-    height: 100%;
+  flex-direction: column;
+  display: flex;
+  height: 100%;
+
 }
 
 .dndflow aside {
-    border-right: 1px solid #4b4a4a;
-    padding: 15px 10px;
-    font-size: 12px;
-    background: #5a5a5a;
+  border-right: 1px solid #4b4a4a;
+  padding: 15px 10px;
+  font-size: 12px;
+  background: #5a5a5a;
+
 }
 
 .dndflow aside .description {
-    margin-bottom: 10px;
-    color: white;
+  margin-bottom: 10px;
+  color: white;
 }
 
 .dndflow .dndnode {
-    height: 20px;
-    padding: 4px;
-    border: 1px solid #1a192b;
-    background-color: rgb(168, 164, 164);
-    border-radius: 2px;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: grab;
+  
+  height: 20px;
+  padding: 4px;
+  border: 1px solid #1a192b;
+  background-color: rgb(168, 164, 164);
+  border-radius: 2px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: grab;
 }
 
 .dndflow .reactflow-wrapper {
-    flex-grow: 1;
-    height: 100%;
+  flex-grow: 1;
+  height: 100%;
 }
 
 @media screen and (min-width: 768px) {
-    .dndflow {
-        flex-direction: row;
-    }
-    .dndflow aside {
-        width: 20%;
-        max-width: 250px;
-    }
+  .dndflow {
+    flex-direction: row;
+  }
+  .dndflow aside {
+    width: 20%;
+    max-width: 250px;
+  }
 }
 
 .run_btn {
-    position: absolute;
-    right: 0;
-    margin-right: 20px;
-    margin-top: 20px;
-    z-index: 999;
+  position: absolute;
+  right: 0;
+  margin-right: 20px;
+  margin-top: 20px;
+  z-index: 999;
 }

@@ -1,0 +1,54 @@
+.headerMenu {
+  background-color: white;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 5px 15px rgba(168, 159, 168, 0.3);
+  -webkit-box-shadow: 0 5px 15px rgba(168, 159, 168, 0.3);
+  -moz-box-shadow: 0 5px 15px rgba(168, 159, 168, 0.3);
+}
+
+.headerContainer {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+.routerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.aTag {
+  margin: 10px;
+  cursor: pointer;
+  color: black;
+}
+
+.playgroundBtn {
+  border: none;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+  color: #fff;
+  width: 110px;
+  height: 45px;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 700;
+  background-color: #1b1a2b;
+}
+
+.playgroundBtn:hover {
+  background-color: #e84545;
+}
+
+.aPlaygroundBtn {
+  color: #fff;
+  text-decoration: none;
+}
