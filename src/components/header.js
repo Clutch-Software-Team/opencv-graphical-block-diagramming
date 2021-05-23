@@ -16,12 +16,15 @@ const Header = () => {
             alt="clutch-icon"
             style={{ height: "55px", width: "75px" }}
           />
-          <span style={{ marginLeft: "10px",fontSize:"25px",marginTop:"10px" }}><b>Lilyum</b></span>
+          <span
+            style={{ marginLeft: "10px", fontSize: "25px", marginTop: "10px" }}
+          >
+            <b>Lilyum</b>
+          </span>
         </div>
         <div className="routerContainer">
           <a className="aTag">Documentation</a>
           <a className="aTag">Examples</a>
-          <a className="aTag">About</a>
           <button className="playgroundBtn">
             <a href="/opencv" className="aPlaygroundBtn">
               Playground

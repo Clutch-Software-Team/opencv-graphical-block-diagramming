@@ -1,9 +1,9 @@
 import "../assets/css/home.css";
 import Header from "../components/header";
-import Footer from "../components/footer";
 import example from "../assets/example.png";
 import github from "../assets/github.png";
 import mail from "../assets/mail.png";
+import logo from "../assets/logo.png";
 const Home = () => {
   return (
     <>
@@ -50,7 +50,9 @@ const Home = () => {
                     Playground
                   </a>
                 </button>
-                <a className="aTag">Documentation</a>
+                <a className="aTag">
+                  <b>Documentation</b>
+                </a>
               </div>
             </div>
           </div>
@@ -120,6 +122,7 @@ const Home = () => {
                 fontSize: "20px",
                 paddingTop: "20px",
                 paddingBottom: "20px",
+                textAlign: "center",
               }}
             >
               If we look at the sample picture, the{" "}
@@ -136,13 +139,13 @@ const Home = () => {
             <div
               style={{
                 width: "100%",
-                height: "500px",
+                height: "475px",
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
                 alignItems: "center",
                 paddingTop: "30px",
-                paddingBottom: "30px",
+                paddingBottom: "40px",
               }}
             >
               <span className="slogan">
@@ -162,6 +165,7 @@ const Home = () => {
                   display: "flex",
                   flexDirection: "row",
                   marginTop: "20px",
+                  marginBottom: "50px",
                 }}
               >
                 <span style={{ cursor: "pointer", marginRight: "25px" }}>
@@ -184,10 +188,80 @@ const Home = () => {
                   </a>
                 </span>
               </div>
+              <hr
+                style={{
+                  width: "50%",
+                  border: "1px solid gray",
+                }}
+              />
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-evenly",
+                  alignItems: "center",
+                  width: "100%",
+                  paddingBottom: 0,
+                  marginBottom: 0,
+                }}
+              >
+                <span
+                  style={{
+                    paddingLeft: "10px",
+                    marginTop: "50px",
+                    display: "flex",
+                    flexDirection: "row",
+                  }}
+                >
+                  <img
+                    src={logo}
+                    alt="clutch-icon"
+                    style={{ height: "55px", width: "75px" }}
+                  />
+                  <span style={{ marginLeft: "10px", marginTop: "15px" }}>
+                    <b>LILYUM</b>
+                  </span>
+                </span>
+                <div style={{ paddingRight: "350px", paddingLeft: "280px" }}>
+                  <p
+                    style={{
+                      color: "black",
+                      textAlign: "center",
+                      marginBottom: "5px",
+                      fontSize: "20px",
+                    }}
+                  >
+                    ABOUT US
+                  </p>
+                  <p
+                    style={{
+                      color: "gray",
+                      textAlign: "center",
+                      paddingBottom: 0,
+                      marginBottom: 0,
+                    }}
+                  >
+                    LILYUM Project Istanbul Sabahattin Zaim University was
+                    developed as the graduation project by computer and software
+                    engineer students.
+                  </p>
+                </div>
+                <span
+                  style={{
+                    paddingRight: "10px",
+                    paddingLeft: "20px",
+                    marginTop: "50px",
+                  }}
+                >
+                  <img
+                    src={github}
+                    alt="clutch-icon"
+                    style={{ height: "55px", width: "55px" }}
+                  />
+                </span>
+              </div>
             </div>
           </div>
         </div>
-        <Footer />
       </div>
     </>
   );
