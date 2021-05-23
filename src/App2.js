@@ -122,24 +122,8 @@ export default function DnDFlow() {
           <span style={{ zIndex:5, position:"absolute",bottom:"20px",right:"20px", cursor:"pointer"}} title="Python Format" onClick={handleShowPython}> 
          <img src={pyLogo} alt="myimage" style={{height:"50px",width:"50px"}} />
         </span>
-
         
-        <Modal show={showPython} onHide={handleClosePython}>
-        <Modal.Header closeButton>
-          <Modal.Title>Python Format</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Codes</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClosePython}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClosePython}>
-            Download
-          </Button>
-        </Modal.Footer>
-        </Modal>
-
-        <span style={{ zIndex:5, position:"absolute",bottom:"20px",right:"90px", cursor:"pointer"}}  title="OCR Format" onClick={handleShowOCR}>
+        <span style={{ zIndex:5, position:"absolute",bottom:"20px",right:"90px", cursor:"pointer"}}  title="OCR Format">
          <img src={ocrLogo} alt="myimage" style={{height:"50px",width:"50px"}}   />
         </span>
 

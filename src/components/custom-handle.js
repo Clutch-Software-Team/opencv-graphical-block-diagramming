@@ -38,8 +38,8 @@ const CustomHandle = (props) => {
         top: 20,
         marginTop: localIndex * 30,
         borderRadius: 15,
-        height: 8,
-        width: 8,
+        height: 15,
+        width: 15,
         backgroundColor: getHandleColor(parameter.type),
         borderColor: "black",
         borderWidth: 2,
@@ -48,8 +48,8 @@ const CustomHandle = (props) => {
     }
 
     const handleReturnStyle = {
-        height: 8,
-        width: 8,
+        height: 15,
+        width: 15,
         backgroundColor: getHandleColor(parameter.type),
         borderColor: "black",
         borderWidth: 2,
