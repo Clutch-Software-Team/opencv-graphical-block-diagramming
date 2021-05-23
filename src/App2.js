@@ -18,6 +18,10 @@ import pyLogo from "./assets/file.png"
 import ocrLogo from "./assets/ocr.png"
 import backLogo from "./assets/back.png"
 
+// Python modal için react-boostrap import
+import { Modal,Button } from 'react-bootstrap';
+import "bootstrap/dist/css/bootstrap.min.css";
+
 //const cv = require("./assets/js/opencv");
 
 import cv from "./assets/js/opencv";
@@ -95,26 +99,67 @@ export default function DnDFlow() {
     engine_run(_elements, cv);
   };
 
+  // Python modal için değişken tanımlamaları
+  const [showPython, setShowPython] = useState(false);
+  const handleClosePython = () => setShowPython(false);
+  const handleShowPython = () => setShowPython(true);
+
+  const [showOCR, setShowOCR] = useState(false);
+  const handleCloseOCR = () => setShowOCR(false);
+  const handleShowOCR = () => setShowOCR(true);
 
   return (
     <div className="dndflow">
       <NodeSidebar />
-      
+
       <div className="reactflow-wrapper" ref={reactFlowWrapper}>
-      <div style={{display:"flex"}}>
+        <div style={{ display: "flex" }}>
 
-        <span style={{ zIndex:5, position:"absolute",top:"20px", cursor:"pointer"}} title="Python Format">
-         <a href="/"><img src={backLogo} alt="myimage" style={{height:"50px",width:"50px"}} /></a>
-        </span>
+          <span style={{ zIndex: 5, position: "absolute", top: "20px", cursor: "pointer" }} title="Python Format">
+            <a href="/"><img src={backLogo} alt="myimage" style={{ height: "50px", width: "50px" }} /></a>
+          </span>
 
-        <span style={{ zIndex:5, position:"absolute",bottom:"20px",right:"20px", cursor:"pointer"}} title="Python Format">
+          <span style={{ zIndex:5, position:"absolute",bottom:"20px",right:"20px", cursor:"pointer"}} title="Python Format" onClick={handleShowPython}> 
          <img src={pyLogo} alt="myimage" style={{height:"50px",width:"50px"}} />
         </span>
-        <span style={{ zIndex:5, position:"absolute",bottom:"20px",right:"90px", cursor:"pointer"}}  title="OCR Format">
+
+        
+        <Modal show={showPython} onHide={handleClosePython}>
+        <Modal.Header closeButton>
+          <Modal.Title>Python Format</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Codes</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClosePython}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClosePython}>
+            Download
+          </Button>
+        </Modal.Footer>
+        </Modal>
+
+        <span style={{ zIndex:5, position:"absolute",bottom:"20px",right:"90px", cursor:"pointer"}}  title="OCR Format" onClick={handleShowOCR}>
          <img src={ocrLogo} alt="myimage" style={{height:"50px",width:"50px"}}   />
         </span>
-        <button className="run_btn" onClick={run}>
-          Run
+
+        <Modal show={showOCR} onHide={handleCloseOCR}>
+        <Modal.Header closeButton>
+          <Modal.Title>OCR Format</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Codes</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseOCR}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleCloseOCR}>
+            Download
+          </Button>
+        </Modal.Footer>
+        </Modal>
+
+          <button className="run_btn" onClick={run}>
+            Run
         </button>
         </div>
         <ReactFlow

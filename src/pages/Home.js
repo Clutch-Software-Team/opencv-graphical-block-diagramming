@@ -10,7 +10,7 @@ const Home = () => {
             <div
               style={{
                 width: "100%",
-                height: "300px",
+                height: "420px",
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
