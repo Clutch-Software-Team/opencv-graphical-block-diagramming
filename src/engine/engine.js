@@ -1,10 +1,12 @@
 // tek bir nodu calistiracak fonksion
 //App.js te impor tkısımlarına " import {engine_run} from './engine/engine'; " ekle
 //App.js teki run fonksiyonuna " engine_run(nodes); "ekle
+import { convertJsToPython } from "./converter";
 const cv = require("../assets/js/opencv");
-
 //import cv from '../assets/js/opencv';
 var nodeList;
+var queue = [];
+
 export function engine_run(node_List, cv) {
   nodeList = node_List;
   console.log("nodeList");
@@ -16,15 +18,20 @@ export function engine_run(node_List, cv) {
     }
   }
 
+  // Convert
+  convertJsToPython(queue);
+
   function runNode(node, listId, cv) {
     // node id si verilen nodu calistiracak
     // isExecuted degiskenini calistirdiktan sonra true yapacak
-
     console.log("ee hani calisti");
     if (node.isExecuted == false) {
       var i = nodeIndexBul(node.id);
       console.log("157 var i:" + i);
       if (node.type == "start") {
+        //
+        queue.push(node);
+        //
         var f = new Function(
           "node,node_id,cv",
           ' console.log("start ici node_id: "+node_id); \
@@ -34,6 +41,9 @@ export function engine_run(node_List, cv) {
         );
         f(nodeList[i], node.id, cv);
       } else if (node.type == "finish") {
+        //
+        queue.push(node);
+        //
         let refNodeName = isReferanceParam(
           node.data.parameters[0].currentValue
         );
@@ -55,6 +65,9 @@ export function engine_run(node_List, cv) {
         );
         f(node, cv, nodeList[i]);
       } else {
+        //
+        queue.push(node);
+        //
         console.log("xxxxxynode.data :" + node + node.data);
         var fonctionString = createFunction(node.data);
         var f = new Function(
@@ -76,6 +89,10 @@ export function engine_run(node_List, cv) {
       }
 
       node.isExecuted = true;
+    }else{
+      if(node.type == "start"){
+        queue.push(node);
+      }
     }
     return true;
   }
@@ -144,6 +161,7 @@ export function engine_run(node_List, cv) {
         fString = fString + "mat1" + ",";
       } else {
         let currVal = element.currentValue;
+        
         if (currVal == "" || currVal == null) {
           //parmetredeki deger null ise ve gerekli degilse default degeri ver
           if (element.required == true) {
@@ -170,9 +188,11 @@ export function engine_run(node_List, cv) {
           // assagisi duzenlenmeli, calismasi istenen node calisip calismadigini kontol et
           //calistiysa direkt cikti degerini al,
           //calismadiysa runNode() fonksiyonu ile calismasini sagla
-
+          
+          
           let isExecuted = nodeCalistiMi(referansNode);
           if (isExecuted == false) {
+            
             console.log(
               "referansNode: " +
                 referansNode +
@@ -190,6 +210,11 @@ export function engine_run(node_List, cv) {
             ) {
               return 0;
             }
+          }else{
+            //
+            queue.push(nodeList[nodeIndexBul(referansNode)]);
+            console.log("biz burdayik");
+            //
           }
           isExecuted = nodeCalistiMi(referansNode);
           console.log(
