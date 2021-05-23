@@ -1,5 +1,6 @@
 import App2 from "./App2";
 import Home from "./pages/Home";
+import Docs from "./pages/Document";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -17,6 +18,7 @@ function App() {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/opencv" exact component={App2} />
+          <Route path="/docs" exact component={Docs} />
         </Switch>
       </Router>
     </div>

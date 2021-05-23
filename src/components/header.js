@@ -11,19 +11,30 @@ const Header = () => {
             flexDirection: "row",
           }}
         >
-          <img
-            src={logo}
-            alt="clutch-icon"
-            style={{ height: "55px", width: "75px" }}
-          />
+          <a href="/">
+            <img
+              src={logo}
+              alt="clutch-icon"
+              style={{ height: "55px", width: "75px" }}
+            />
+          </a>
+
           <span
-            style={{ marginLeft: "10px", fontSize: "25px", marginTop: "10px" }}
+            style={{
+              marginLeft: "10px",
+              fontSize: "25px",
+              marginTop: "10px",
+            }}
           >
-            <b>Lilyum</b>
+            <a href="/" style={{ textDecoration: "none", color: "black" }}>
+              <b>Lilyum</b>
+            </a>
           </span>
         </div>
         <div className="routerContainer">
-          <a className="aTag">Documentation</a>
+          <a className="aTag" href="/docs">
+            Documentation
+          </a>
           <a className="aTag">Examples</a>
           <button className="playgroundBtn">
             <a href="/opencv" className="aPlaygroundBtn">

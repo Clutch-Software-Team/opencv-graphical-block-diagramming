@@ -50,7 +50,7 @@ const Home = () => {
                     Playground
                   </a>
                 </button>
-                <a className="aTag">
+                <a className="aTag" href="/docs">
                   <b>Documentation</b>
                 </a>
               </div>
@@ -130,7 +130,16 @@ const Home = () => {
               working with the <b style={{ color: "#fb0072" }}>ctvColor </b>{" "}
               node. You can look at the{" "}
               <b>
-                <a style={{ cursor: "pointer" }}>documents</a>
+                <a
+                  style={{
+                    cursor: "pointer",
+                    textDecoration: "none",
+                    color: "white",
+                  }}
+                  href="/docs"
+                >
+                  documents
+                </a>
               </b>{" "}
               to browse all these rules.
             </p>

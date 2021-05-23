@@ -1,0 +1,55 @@
+.docContainer {
+  flex-direction: row;
+  display: flex;
+  height: 100%;
+}
+
+.navBar {
+  height: 200vh;
+  width: 380px;
+  border-right: solid 2px #f6f9f8;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 1;
+}
+
+.nodes {
+  color: #fb0072;
+  margin-left: 20px;
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  font-weight: 600;
+}
+
+.nodes:hover {
+  background-color: #f2f4f6;
+}
+
+.mainNav {
+  color: #fb0072;
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  font-weight: 600;
+}
+
+.mainNav:hover {
+  background-color: #f2f4f6;
+}
+
+.documents {
+  margin-top: 30px;
+  height: 100%;
+  width: 100%;
+  margin-left: 200px;
+  margin-right: 200px;
+  flex-shrink: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
