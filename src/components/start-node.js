@@ -5,7 +5,9 @@ const cv = require("../assets/js/opencv");
 const StartNodeComponent = (node) => {
   const onChange = (event) => {
     let imgElement = document.getElementById(node.id);
-    imgElement.src = URL.createObjectURL(event.target.files[0]);
+    if (event.target.files.length !== 0) {
+      imgElement.src = URL.createObjectURL(event.target.files[0]);
+    }
   };
 
   const containerStyle = {
