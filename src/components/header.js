@@ -37,7 +37,7 @@ const Header = () => {
           </a>
           <a className="aTag">Examples</a>
           <button className="playgroundBtn">
-            <a href="/opencv" className="aPlaygroundBtn">
+            <a href="/playground" className="aPlaygroundBtn">
               Playground
             </a>
           </button>

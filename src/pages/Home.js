@@ -46,7 +46,7 @@ const Home = () => {
                 }}
               >
                 <button className="playgroundBtn">
-                  <a href="/opencv" className="aPlaygroundBtn">
+                  <a href="/playground" className="aPlaygroundBtn">
                     Playground
                   </a>
                 </button>
