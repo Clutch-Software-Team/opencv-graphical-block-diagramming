@@ -105,7 +105,6 @@ export default function Playground() {
 
   const run = () => {
     let _elements = reactFlowInstance.getElements();
-    console.log(_elements);
     engine_run(_elements, cv);
   };
 
@@ -113,10 +112,6 @@ export default function Playground() {
   const [showPython, setShowPython] = useState(false);
   const handleClosePython = () => setShowPython(false);
   const handleShowPython = () => setShowPython(true);
-
-  const [showOCR, setShowOCR] = useState(false);
-  const handleCloseOCR = () => setShowOCR(false);
-  const handleShowOCR = () => setShowOCR(true);
 
   return (
     <div className="dndflow">
@@ -132,24 +127,9 @@ export default function Playground() {
             <img src={ocrLogo} alt="myimage" style={{ height: "50px", width: "50px" }} />
           </span>
 
-          <Modal show={showOCR} onHide={handleCloseOCR}>
-            <Modal.Header closeButton>
-              <Modal.Title>OCR Format</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>Codes</Modal.Body>
-            <Modal.Footer>
-              <Button variant="secondary" onClick={handleCloseOCR}>
-                Close
-          </Button>
-              <Button variant="primary" onClick={handleCloseOCR}>
-                Download
-          </Button>
-            </Modal.Footer>
-          </Modal>
-
           <button className="run_btn" onClick={run}>
             Run
-        </button>
+          </button>
         </div>
         <ReactFlow
           nodeTypes={nodeTypes}
