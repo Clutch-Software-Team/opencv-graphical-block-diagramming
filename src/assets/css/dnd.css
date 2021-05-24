@@ -1,6 +1,20 @@
-.description{
+.description {
   text-align: center;
   font-size: 17px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: gray;
+  border-radius: 10px;
 }
 
 .reactflow-wrapper {
@@ -27,11 +41,11 @@
 }
 
 .dndflow .dndnode {
-  height: 20px;
+  height: 30px;
   padding: 4px;
   border: 1px solid #1a192b;
   background-color: rgb(168, 164, 164);
-  border-radius: 10px;
+  border-radius: 5px;
   margin-bottom: 10px;
   display: flex;
   justify-content: center;
