@@ -16,13 +16,10 @@ import getId from "./helpers/get-id";
 
 import pyLogo from "./assets/file.png"
 import ocrLogo from "./assets/ocr.png"
-import backLogo from "./assets/back.png"
 
 // Python modal için react-boostrap import
 import { Modal, Button } from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
-
-//const cv = require("./assets/js/opencv");
 
 import cv from "./assets/js/opencv";
 import { engine_run } from "./engine/engine";
@@ -93,6 +90,19 @@ export default function Playground() {
     setElements((es) => es.concat(newNode));
   };
 
+  const exportToOcr = () => {
+    let _elements = reactFlowInstance.getElements();
+
+    let data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(_elements));
+
+    let a = document.createElement('a');
+    a.href = 'data:' + data;
+    a.download = new Date().toISOString() + '.ocr';
+    a.innerHTML = 'download JSON';
+
+    a.click();
+  }
+
   const run = () => {
     let _elements = reactFlowInstance.getElements();
     console.log(_elements);
@@ -118,7 +128,7 @@ export default function Playground() {
             <img src={pyLogo} alt="myimage" style={{ height: "50px", width: "50px" }} />
           </span>
 
-          <span style={{ zIndex: 5, position: "absolute", bottom: "20px", right: "90px", cursor: "pointer" }} title="OCR Format">
+          <span style={{ zIndex: 5, position: "absolute", bottom: "20px", right: "90px", cursor: "pointer" }} title="Export Schema" onClick={exportToOcr}>
             <img src={ocrLogo} alt="myimage" style={{ height: "50px", width: "50px" }} />
           </span>
 
