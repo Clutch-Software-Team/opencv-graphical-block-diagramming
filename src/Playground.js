@@ -103,6 +103,19 @@ export default function Playground() {
     a.click();
   }
 
+  const importOcr = () => {
+    document.getElementById('ocrfile').click();
+  }
+
+  const handleOcrFileChange = e => {
+    const fileReader = new FileReader();
+    fileReader.readAsText(e.target.files[0], "UTF-8");
+    fileReader.onload = e => {
+      let uploaded_nodes = JSON.parse(e.target.result);
+      setElements(uploaded_nodes);
+    };
+  };
+
   const run = () => {
     let _elements = reactFlowInstance.getElements();
     engine_run(_elements, cv);
@@ -126,6 +139,12 @@ export default function Playground() {
           <span style={{ zIndex: 5, position: "absolute", bottom: "20px", right: "90px", cursor: "pointer" }} title="Export Schema" onClick={exportToOcr}>
             <img src={ocrLogo} alt="myimage" style={{ height: "50px", width: "50px" }} />
           </span>
+
+          <span style={{ zIndex: 5, position: "absolute", bottom: "20px", right: "160px", cursor: "pointer" }} title="Export Schema" onClick={importOcr}>
+            <img src={ocrLogo} alt="myimage" style={{ height: "50px", width: "50px" }} />
+          </span>
+
+          <input type="file" id="ocrfile" accept={'.ocr'} onChange={handleOcrFileChange} style={{ display: 'none' }} />
 
           <button className="run_btn" onClick={run}>
             Run
