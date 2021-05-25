@@ -4,7 +4,7 @@ import CustomHandle from "./custom-handle";
 
 import getHeaderColor from "../helpers/get-header-color";
 
-import info from "../assets/info2.png";
+import info from "../assets/img/info.png";
 
 import "../assets/css/infoBox.css";
 

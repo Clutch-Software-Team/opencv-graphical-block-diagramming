@@ -1,9 +1,9 @@
 import "../assets/css/home.css";
 import Header from "../components/header";
-import example from "../assets/example.png";
-import github from "../assets/github.png";
-import mail from "../assets/mail.png";
-import logo from "../assets/logo.png";
+import example from "../assets/img/example.png";
+import github from "../assets/img/github.png";
+import mail from "../assets/img/mail.png";
+import logo from "../assets/img/logo.png";
 const Home = () => {
   return (
     <>

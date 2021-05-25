@@ -12,8 +12,7 @@ const NodeSidebar = () => {
 
     return (
         <aside style={{ overflowX: 'hidden' }}>
-            <div className="description">You can drag these nodes to the pane on the right.</div>
-
+            <div className="description">You can drag these nodes to the pane on the right</div>
             {nodes.map((node, index) => (
                 <div className={"dndnode"} key={index} onDragStart={(event) => onDragStart(event, node)} draggable>
                     {node.data.label}

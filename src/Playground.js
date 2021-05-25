@@ -14,9 +14,9 @@ import { NodeStateContext } from "./provider/node-state-provider";
 import setInputValue from "./helpers/set-input-value";
 import getId from "./helpers/get-id";
 
-import pyLogo from "./assets/file.png";
-import ocrLogo from "./assets/ocr.png";
-import ocrLogo2 from "./assets/ocr2.png";
+import pyLogo from "./assets/img/file.png";
+import ocrExport from "./assets/img/ocrExport.png";
+import ocrImport from "./assets/img/ocrImport.png";
 
 // Python modal için react-boostrap import
 import { Modal, Button } from "react-bootstrap";
@@ -165,7 +165,7 @@ export default function Playground() {
             onClick={exportToOcr}
           >
             <img
-              src={ocrLogo}
+              src={ocrExport}
               alt="myimage"
               style={{ height: "50px", width: "50px" }}
             />
@@ -183,7 +183,7 @@ export default function Playground() {
             onClick={importOcr}
           >
             <img
-              src={ocrLogo2}
+              src={ocrImport}
               alt="myimage"
               style={{ height: "50px", width: "50px" }}
             />

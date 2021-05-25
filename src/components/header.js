@@ -1,5 +1,5 @@
 import "../assets/css/header.css";
-import logo from "../assets/logo.png";
+import logo from "../assets/img/logo.png";
 const Header = () => {
   return (
     <header className="headerMenu">
