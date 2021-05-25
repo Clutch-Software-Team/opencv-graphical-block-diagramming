@@ -221,11 +221,13 @@ const Home = () => {
                     flexDirection: "row",
                   }}
                 >
-                  <img
-                    src={logo}
-                    alt="clutch-icon"
-                    style={{ height: "55px", width: "75px" }}
-                  />
+                  <a href="#">
+                    <img
+                      src={logo}
+                      alt="clutch-icon"
+                      style={{ height: "55px", width: "75px" }}
+                    />
+                  </a>
                   <span style={{ marginLeft: "10px", marginTop: "15px" }}>
                     <b>LILYUM</b>
                   </span>
@@ -254,6 +256,7 @@ const Home = () => {
                     engineer students.
                   </p>
                 </div>
+
                 <span
                   style={{
                     paddingRight: "10px",

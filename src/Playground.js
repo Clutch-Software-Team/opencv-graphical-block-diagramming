@@ -14,11 +14,12 @@ import { NodeStateContext } from "./provider/node-state-provider";
 import setInputValue from "./helpers/set-input-value";
 import getId from "./helpers/get-id";
 
-import pyLogo from "./assets/file.png"
-import ocrLogo from "./assets/ocr.png"
+import pyLogo from "./assets/file.png";
+import ocrLogo from "./assets/ocr.png";
+import ocrLogo2 from "./assets/ocr2.png";
 
 // Python modal için react-boostrap import
-import { Modal, Button } from 'react-bootstrap';
+import { Modal, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import cv from "./assets/js/opencv";
@@ -93,24 +94,26 @@ export default function Playground() {
   const exportToOcr = () => {
     let _elements = reactFlowInstance.getElements();
 
-    let data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(_elements));
+    let data =
+      "text/json;charset=utf-8," +
+      encodeURIComponent(JSON.stringify(_elements));
 
-    let a = document.createElement('a');
-    a.href = 'data:' + data;
-    a.download = new Date().toISOString() + '.ocr';
-    a.innerHTML = 'download JSON';
+    let a = document.createElement("a");
+    a.href = "data:" + data;
+    a.download = new Date().toISOString() + ".ocr";
+    a.innerHTML = "download JSON";
 
     a.click();
-  }
+  };
 
   const importOcr = () => {
-    document.getElementById('ocrfile').click();
-  }
+    document.getElementById("ocrfile").click();
+  };
 
-  const handleOcrFileChange = e => {
+  const handleOcrFileChange = (e) => {
     const fileReader = new FileReader();
     fileReader.readAsText(e.target.files[0], "UTF-8");
-    fileReader.onload = e => {
+    fileReader.onload = (e) => {
       let uploaded_nodes = JSON.parse(e.target.result);
       setElements(uploaded_nodes);
     };
@@ -132,19 +135,67 @@ export default function Playground() {
 
       <div className="reactflow-wrapper" ref={reactFlowWrapper}>
         <div style={{ display: "flex" }}>
-          <span style={{ zIndex: 5, position: "absolute", bottom: "20px", right: "20px", cursor: "pointer" }} title="Python Format" onClick={handleShowPython}>
-            <img src={pyLogo} alt="myimage" style={{ height: "50px", width: "50px" }} />
+          <span
+            style={{
+              zIndex: 5,
+              position: "absolute",
+              bottom: "20px",
+              right: "20px",
+              cursor: "pointer",
+            }}
+            title="Export Python Format"
+            onClick={handleShowPython}
+          >
+            <img
+              src={pyLogo}
+              alt="myimage"
+              style={{ height: "50px", width: "50px" }}
+            />
           </span>
 
-          <span style={{ zIndex: 5, position: "absolute", bottom: "20px", right: "90px", cursor: "pointer" }} title="Export Schema" onClick={exportToOcr}>
-            <img src={ocrLogo} alt="myimage" style={{ height: "50px", width: "50px" }} />
+          <span
+            style={{
+              zIndex: 5,
+              position: "absolute",
+              bottom: "20px",
+              right: "90px",
+              cursor: "pointer",
+            }}
+            title="Export OCR File"
+            onClick={exportToOcr}
+          >
+            <img
+              src={ocrLogo}
+              alt="myimage"
+              style={{ height: "50px", width: "50px" }}
+            />
           </span>
 
-          <span style={{ zIndex: 5, position: "absolute", bottom: "20px", right: "160px", cursor: "pointer" }} title="Export Schema" onClick={importOcr}>
-            <img src={ocrLogo} alt="myimage" style={{ height: "50px", width: "50px" }} />
+          <span
+            style={{
+              zIndex: 5,
+              position: "absolute",
+              bottom: "20px",
+              right: "160px",
+              cursor: "pointer",
+            }}
+            title="Import OCR File"
+            onClick={importOcr}
+          >
+            <img
+              src={ocrLogo2}
+              alt="myimage"
+              style={{ height: "50px", width: "50px" }}
+            />
           </span>
 
-          <input type="file" id="ocrfile" accept={'.ocr'} onChange={handleOcrFileChange} style={{ display: 'none' }} />
+          <input
+            type="file"
+            id="ocrfile"
+            accept={".ocr"}
+            onChange={handleOcrFileChange}
+            style={{ display: "none" }}
+          />
 
           <button className="run_btn" onClick={run}>
             Run

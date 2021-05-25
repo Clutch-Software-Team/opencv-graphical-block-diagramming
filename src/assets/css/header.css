@@ -53,3 +53,13 @@
   color: #fff;
   text-decoration: none;
 }
+
+.aPlaygroundBtn:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+  color: black;
+}
