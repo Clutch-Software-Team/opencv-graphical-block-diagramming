@@ -3,7 +3,7 @@ const customNodes = [
       type: "start",
       isExecuted: false,
       data: {
-          label: "start",
+          label: "Start",
           functionName: "start",
           returnType: "Mat",
           returnValue: null,
@@ -36,8 +36,9 @@ const customNodes = [
       type: "custom",
       isExecuted: false,
       data: {
-          label: "normalize",
+          label: "Normalize",
           functionName: "normalize",
+          infoNodes:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
           returnType: "void",
           returnValue: null,
           parameters: [
@@ -55,8 +56,9 @@ const customNodes = [
       type: "custom",
       isExecuted: false,
       data: {
-          label: "convertScaleAbs",
+          label: "Convert Scale Abs",
           functionName: "convertScaleAbs",
+          infoNodes:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
           returnType: "void",
           returnValue: null,
           parameters: [
@@ -71,8 +73,9 @@ const customNodes = [
       type: "custom",
       isExecuted: false,
       data: {
-          label: "blur",
+          label: "Blur",
           functionName: "blur",
+          infoNodes:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
           returnType: "void",
           returnValue: null,
           parameters: [
@@ -88,8 +91,9 @@ const customNodes = [
       type: "custom",
       isExecuted: false,
       data: {
-          label: "boxFilter",
+          label: "Box Filter",
           functionName: "boxFilter",
+          infoNodes:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
           returnType: "void",
           returnValue: null,
           parameters: [
@@ -107,8 +111,9 @@ const customNodes = [
       type: "custom",
       isExecuted: false,
       data: {
-          label: "compareHist",
+          label: "Compare Hist",
           functionName: "compareHist",
+          infoNodes:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
           returnType: "double",
           returnValue: null,
           parameters: [
@@ -122,8 +127,9 @@ const customNodes = [
       type: "custom",
       isExecuted: false,
       data: {
-          label: "cornerHarris",
+          label: "Corner Harris",
           functionName: "cornerHarris",
+          infoNodes:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
           returnType: "void",
           returnValue: null,
           parameters: [
@@ -140,8 +146,9 @@ const customNodes = [
       type: "custom",
       isExecuted: false,
       data: {
-          label: "cvtColor",
+          label: "CVT Color",
           functionName: "cvtColor",
+          infoNodes:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
           returnType: "void",
           returnValue: null,
           parameters: [
@@ -158,6 +165,7 @@ const customNodes = [
       data: {
           label: "Canny",
           functionName: "Canny",
+          infoNodes:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
           returnType: "void",
           returnValue: null,
           parameters: [
@@ -174,8 +182,9 @@ const customNodes = [
       type: "custom",
       isExecuted: false,
       data: {
-          label: "GaussianBlur",
+          label: "Gaussian Blur",
           functionName: "GaussianBlur",
+          infoNodes:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
           returnType: "void",
           returnValue: null,
           parameters: [
@@ -194,6 +203,7 @@ const customNodes = [
       data: {
           label: "Laplacian",
           functionName: "Laplacian",
+          infoNodes:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
           returnType: "void",
           returnValue: null,
           parameters: [
@@ -211,8 +221,9 @@ const customNodes = [
       type: "custom",
       isExecuted: false,
       data: {
-          label: "findContours",
+          label: "Find Contours",
           functionName: "findContours",
+          infoNodes:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
           returnType: "MatOfArrays",
           returnValue: null,
           parameters: [
@@ -228,8 +239,9 @@ const customNodes = [
       type: "custom",
       isExecuted: false,
       data: {
-          label: "filter2D",
+          label: "Filter 2D",
           functionName: "filter2D",
+          infoNodes:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
           returnType: "void",
           returnValue: null,
           parameters: [
@@ -247,8 +259,9 @@ const customNodes = [
       type: "custom",
       isExecuted: false,
       data: {
-          label: "distanceTransform",
+          label: "Distance Transform",
           functionName: "distanceTransform",
+          infoNodes:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
           returnType: "void",
           returnValue: null,
           parameters: [
@@ -264,8 +277,9 @@ const customNodes = [
       type: "custom",
       isExecuted: false,
       data: {
-          label: "resize",
+          label: "Resize",
           functionName: "resize",
+          infoNodes:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
           returnType: "void",
           returnValue: null,
           parameters: [
@@ -284,8 +298,9 @@ const customNodes = [
       type: "custom",
       isExecuted: false,
       data: {
-          label: "medianBlur",
+          label: "Median Blur",
           functionName: "medianBlur",
+          infoNodes:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
           returnType: "void",
           returnValue: null,
           parameters: [
@@ -299,8 +314,9 @@ const customNodes = [
       type: "custom",
       isExecuted: false,
       data: {
-          label: "putText",
+          label: "Put Text",
           functionName: "putText",
+          infoNodes:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
           returnType: "void",
           returnValue: null,
           parameters: [
@@ -321,8 +337,9 @@ const customNodes = [
       type: "custom",
       isExecuted: false,
       data: {
-          label: "bitwise_or",
+          label: "Bitwise OR",
           functionName: "bitwise_or",
+          infoNodes:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
           returnType: "void",
           returnValue: null,
           parameters: [
@@ -338,8 +355,9 @@ const customNodes = [
       type: "custom",
       isExecuted: false,
       data: {
-          label: "bitwise_xor",
+          label: "Bitwise XOR",
           functionName: "bitwise_xor",
+          infoNodes:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
           returnType: "void",
           returnValue: null,
           parameters: [
@@ -356,8 +374,9 @@ const customNodes = [
       type: "custom",
       isExecuted: false,
       data: {
-          label: "bitwise_not",
+          label: "Bitwise NOT",
           functionName: "bitwise_not",
+          infoNodes:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
           returnType: "void",
           returnValue: null,
           parameters: [
@@ -373,8 +392,9 @@ const customNodes = [
       type: "custom",
       isExecuted: false,
       data: {
-          label: "bitwise_and",
+          label: "Bitwise AND",
           functionName: "bitwise_and",
+          infoNodes:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
           returnType: "void",
           returnValue: null,
           parameters: [
@@ -393,8 +413,9 @@ const customNodes = [
       type: "custom",
       isExecuted: false,
       data: {
-          label: "multiply",
+          label: "Multiply",
           functionName: "multiply",
+          infoNodes:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
           returnType: "void",
           returnValue: null,
           parameters: [
@@ -413,8 +434,9 @@ const customNodes = [
       type: "custom",
       isExecuted: false,
       data: {
-          label: "pow",
+          label: "Pow",
           functionName: "pow",
+          infoNodes:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
           returnType: "void",
           returnValue: null,
           parameters: [
@@ -430,8 +452,9 @@ const customNodes = [
       type: "custom",
       isExecuted: false,
       data: {
-          label: "rotate",
+          label: "Rotate",
           functionName: "rotate",
+          infoNodes:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
           returnType: "void",
           returnValue: null,
           parameters: [
@@ -448,8 +471,9 @@ const customNodes = [
       type: "custom",
       isExecuted: false,
       data: {
-          label: "divide",
+          label: "Divide",
           functionName: "divide",
+          infoNodes:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
           returnType: "void",
           returnValue: null,
           parameters: [
@@ -468,8 +492,9 @@ const customNodes = [
       type: "custom",
       isExecuted: false,
       data: {
-          label: "subtract",
+          label: "Subtract",
           functionName: "subtract",
+          infoNodes:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
           returnType: "void",
           returnValue: null,
           parameters: [
@@ -488,8 +513,9 @@ const customNodes = [
       type: "custom",
       isExecuted: false,
       data: {
-          label: "add",
+          label: "Add",
           functionName: "add",
+          infoNodes:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
           returnType: "void",
           returnValue: null,
           parameters: [
@@ -502,14 +528,11 @@ const customNodes = [
       }
   },
 
-
-
-
   {
       type: "finish",
       isExecuted: false,
       data: {
-          label: "finish",
+          label: "Finish",
           functionName: "finish",
           returnType: "void",
           returnValue: null,

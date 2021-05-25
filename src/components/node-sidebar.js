@@ -16,7 +16,7 @@ const NodeSidebar = () => {
 
             {nodes.map((node, index) => (
                 <div className={"dndnode"} key={index} onDragStart={(event) => onDragStart(event, node)} draggable>
-                    {node.data.functionName}
+                    {node.data.label}
                 </div>
             ))}
         </aside>

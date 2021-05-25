@@ -41,7 +41,7 @@ const CustomNodeComponent = (node) => {
   return (
     <div style={containerStyle}>
       <div style={titleContainerStyle}>
-        {node.data.functionName}
+        {node.data.label}
         <span
           title="Information"
           style={{
@@ -70,7 +70,7 @@ const CustomNodeComponent = (node) => {
             }}
           >
             <span>
-              <b>{node.data.functionName}</b>
+              <b>{node.data.label}</b>
             </span>
             <br /> <span>{node.data.infoNodes}</span>
           </span>
