@@ -1,6 +1,7 @@
 import "../assets/css/document.css";
 import Header from "../components/header";
 import customNodes from "../constants/nodes";
+import AnchorLink from "react-anchor-link-smooth-scroll";
 
 const Document = () => {
   const nodes = customNodes;
@@ -43,17 +44,19 @@ const Document = () => {
             Nodes
           </span>
           {nodes.map((node, index) => (
-            <a style={{ cursor: "pointer" }} href="#2">
+            <AnchorLink style={{ cursor: "pointer" }} href={`#${index}`}>
               <div className={"nodes"} key={index}>
                 <span style={{ marginLeft: "10px" }}>
-                  <a style={{ cursor: "pointer" }}>{node.data.functionName}</a>
+                  <a style={{ cursor: "pointer" }}>{node.data.label}</a>
                 </span>
               </div>
-            </a>
+            </AnchorLink>
           ))}
         </div>
         <div className="documents">
-          <h2 style={{ alignSelf: "flex-start" }}>Introduction</h2>
+          <h2 style={{ alignSelf: "flex-start" }} id="Introduction">
+            Introduction
+          </h2>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
@@ -72,7 +75,9 @@ const Document = () => {
               marginBottom: "30px",
             }}
           />
-          <h2 style={{ alignSelf: "flex-start" }}>Getting Started</h2>
+          <h2 style={{ alignSelf: "flex-start" }} id="GettingStarted">
+            Getting Started
+          </h2>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
@@ -94,66 +99,15 @@ const Document = () => {
           <h2 style={{ alignSelf: "flex-start", marginBottom: "25px" }}>
             Nodes
           </h2>
-          <h4 style={{ alignSelf: "flex-start" }}>Start Node</h4>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-          <h4 style={{ alignSelf: "flex-start" }}>Sobel Node</h4>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-          <h4 style={{ alignSelf: "flex-start" }}>Normalize Node</h4>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-          <h4 style={{ alignSelf: "flex-start" }}>Convert Scale Abs Node</h4>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-          <h4 style={{ alignSelf: "flex-start" }}>Blur Node</h4>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-          <h4 style={{ alignSelf: "flex-start" }}>Box Filter Node</h4>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
+
+          {nodes.map((node, index) => (
+            <div key={index}>
+              <h4 style={{ alignSelf: "flex-start" }} id={`${index}`}>
+                {node.data.label}
+              </h4>
+              <p>{node.data.infoNodes}</p>
+            </div>
+          ))}
         </div>
       </div>
     </>

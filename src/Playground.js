@@ -132,7 +132,6 @@ export default function Playground() {
   return (
     <div className="dndflow">
       <NodeSidebar />
-
       <div className="reactflow-wrapper" ref={reactFlowWrapper}>
         <div style={{ display: "flex" }}>
           <span
@@ -212,6 +211,8 @@ export default function Playground() {
           deleteKeyCode={46}
           multiSelectionKeyCode={17}
           onlyRenderVisibleElements={false}
+          //zoomOnScroll={false}
+          //panOnScroll={true}
         >
           <Background
             variant="lines"
