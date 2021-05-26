@@ -20,7 +20,8 @@ const StartNodeComponent = (node) => {
 
   const imageStyle = {
     width: 220,
-    height: 250, //200
+    height: 250,
+    objectFit: 'contain'
   };
 
   const titleContainerStyle = {
