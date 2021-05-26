@@ -1,16 +1,17 @@
 import "../assets/css/document.css";
 import Header from "../components/header";
 import customNodes from "../constants/nodes";
+import upArrow from "../assets/img/upArrow.png";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 
 const Document = () => {
   const nodes = customNodes;
   return (
-    <>
+    <div id="top">
       <Header />
       <div className="docContainer">
         <div className="navBar">
-          <a style={{ cursor: "pointer", marginLeft: 0 }} href="#deneme">
+          <a style={{ cursor: "pointer", marginLeft: 0 }}>
             <div className="mainNav">
               <span
                 style={{
@@ -25,7 +26,7 @@ const Document = () => {
             </div>
           </a>
 
-          <a style={{ cursor: "pointer", marginLeft: 0 }} href="#deneme">
+          <a style={{ cursor: "pointer", marginLeft: 0 }}>
             <div className="mainNav">
               <span
                 style={{
@@ -44,7 +45,7 @@ const Document = () => {
             Nodes
           </span>
           {nodes.map((node, index) => (
-            <AnchorLink style={{ cursor: "pointer" }} href={`#${index}`}>
+            <AnchorLink style={{ cursor: "pointer" }} href={`#${index - 1}`}>
               <div className={"nodes"} key={index}>
                 <span style={{ marginLeft: "10px" }}>
                   <a style={{ cursor: "pointer" }}>{node.data.label}</a>
@@ -102,15 +103,27 @@ const Document = () => {
 
           {nodes.map((node, index) => (
             <div key={index}>
-              <h4 style={{ alignSelf: "flex-start" }} id={`${index}`}>
+              <h4
+                style={{ alignSelf: "flex-start", textDecoration: "underline" }}
+                id={`${index}`}
+              >
                 {node.data.label}
               </h4>
               <p>{node.data.infoNodes}</p>
             </div>
           ))}
         </div>
+        <AnchorLink style={{ cursor: "pointer" }} href={`#top`}>
+          <span style={{ position: "fixed", right: "30px", bottom: "30px" }}>
+            <img
+              src={upArrow}
+              alt="myimage"
+              style={{ height: "50px", width: "50px" }}
+            />
+          </span>
+        </AnchorLink>
       </div>
-    </>
+    </div>
   );
 };
 
