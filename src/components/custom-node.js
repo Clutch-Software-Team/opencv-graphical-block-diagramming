@@ -58,7 +58,7 @@ const CustomNodeComponent = (node) => {
             }}
           />
         </span>
-        <div className="infoBox" style={inputStyle}>
+        <div className="infoBox nowheel" style={inputStyle}>
           <span
             style={{
               height: "200px",
