@@ -93,6 +93,7 @@ const CustomHandle = (props) => {
                     />
                     :
                     <select
+                        id={`${node.id}-${parameter.name}`}
                         style={inputStyle}
                         onChange={onChange}
                     >

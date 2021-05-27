@@ -11,6 +11,7 @@ import NodeSidebar from "./components/node-sidebar";
 import nodeTypes from "./constants/node-types";
 
 import { NodeStateContext } from "./provider/node-state-provider";
+import setSelectValue from "./helpers/set-select-value";
 import setInputValue from "./helpers/set-input-value";
 import getId from "./helpers/get-id";
 
@@ -115,7 +116,25 @@ export default function Playground() {
     fileReader.readAsText(e.target.files[0], "UTF-8");
     fileReader.onload = (e) => {
       let uploaded_nodes = JSON.parse(e.target.result);
+
       setElements(uploaded_nodes);
+
+      setTimeout(() => {
+        for (const n of uploaded_nodes) {
+          if (n.id.startsWith('start') || n.source) {
+            continue;
+          }
+          for (const parameter of n.data.parameters) {
+            let input = document.getElementById(`${n.id}-${parameter.name}`)
+            if (parameter.choices) {
+              setSelectValue(input, parameter.currentValue)
+            }
+            else {
+              setInputValue(input, parameter.currentValue)
+            }
+          }
+        }
+      }, 1000)
     };
   };
 
@@ -211,8 +230,8 @@ export default function Playground() {
           deleteKeyCode={46}
           multiSelectionKeyCode={17}
           onlyRenderVisibleElements={false}
-          //zoomOnScroll={false}
-          //panOnScroll={true}
+        //zoomOnScroll={false}
+        //panOnScroll={true}
         >
           <Background
             variant="lines"
