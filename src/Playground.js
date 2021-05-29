@@ -16,8 +16,8 @@ import setInputValue from "./helpers/set-input-value";
 import getId from "./helpers/get-id";
 
 import pyLogo from "./assets/img/file.png";
-import ocrExport from "./assets/img/ocrExport.png";
-import ocrImport from "./assets/img/ocrImport.png";
+import ocrExport from "./assets/img/export.png";
+import ocrImport from "./assets/img/import.png";
 
 // Python modal için react-boostrap import
 import { Modal, Button } from "react-bootstrap";
@@ -121,20 +121,19 @@ export default function Playground() {
 
       setTimeout(() => {
         for (const n of uploaded_nodes) {
-          if (n.id.startsWith('start') || n.source) {
+          if (n.id.startsWith("start") || n.source) {
             continue;
           }
           for (const parameter of n.data.parameters) {
-            let input = document.getElementById(`${n.id}-${parameter.name}`)
+            let input = document.getElementById(`${n.id}-${parameter.name}`);
             if (parameter.choices) {
-              setSelectValue(input, parameter.currentValue)
-            }
-            else {
-              setInputValue(input, parameter.currentValue)
+              setSelectValue(input, parameter.currentValue);
+            } else {
+              setInputValue(input, parameter.currentValue);
             }
           }
         }
-      }, 1000)
+      }, 1000);
     };
   };
 
@@ -230,8 +229,8 @@ export default function Playground() {
           deleteKeyCode={46}
           multiSelectionKeyCode={17}
           onlyRenderVisibleElements={false}
-        //zoomOnScroll={false}
-        //panOnScroll={true}
+          //zoomOnScroll={false}
+          //panOnScroll={true}
         >
           <Background
             variant="lines"
