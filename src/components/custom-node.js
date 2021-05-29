@@ -5,6 +5,7 @@ import CustomHandle from "./custom-handle";
 import getHeaderColor from "../helpers/get-header-color";
 
 import info from "../assets/img/info.png";
+import cancel from "../assets/img/cancel.png";
 
 import "../assets/css/infoBox.css";
 
@@ -64,13 +65,26 @@ const CustomNodeComponent = (node) => {
               height: "200px",
               width: "250px",
               paddingTop: "10px",
-              paddingLeft: "15px",
-              paddingRight: "15px",
+              paddingLeft: "20px",
+              paddingRight: "20px",
               paddingBottom: "15px",
             }}
           >
             <span>
               <b>{node.data.label}</b>
+            </span>
+            <span
+              style={{ cursor: "default", position: "absolute", right: 10 }}
+            >
+              <img
+                src={cancel}
+                alt="info"
+                style={{ height: "20px", width: "20px" }}
+                onClick={() => {
+                  setInfoBox(!infoBox);
+                  console.log(infoBox);
+                }}
+              />
             </span>
             <br /> <span>{node.data.infoNodes}</span>
           </span>
