@@ -24,10 +24,8 @@ export function engine_run(node_List, cv) {
   function runNode(node, listId, cv) {
     // node id si verilen nodu calistiracak
     // isExecuted degiskenini calistirdiktan sonra true yapacak
-    console.log("ee hani calisti");
     if (node.isExecuted == false) {
       var i = nodeIndexBul(node.id);
-      console.log("157 var i:" + i);
       if (node.type == "start") {
         //
         queue.push(node);
@@ -51,7 +49,7 @@ export function engine_run(node_List, cv) {
         let i = nodeIndexBul(refNodeName);
         if (nodeList[i].isExecuted == false) {
           if (!runNode(nodeList[i], i, cv)) {
-            console.log(refNodeName + " nodu calistirilamadi.");
+            console.log("[WARN]: "+refNodeName + " nodu calistirilamadi.");
             return false;
           }
         }
@@ -68,7 +66,6 @@ export function engine_run(node_List, cv) {
         //
         queue.push(node);
         //
-        console.log("xxxxxynode.data :" + node + node.data);
         var fonctionString = createFunction(node.data);
         var f = new Function(
           "i,cv,nodeList",
@@ -76,16 +73,14 @@ export function engine_run(node_List, cv) {
                 " +
             fonctionString +
             ' \
-                console.log("sdsd "+name +"ar working now!" +"' +
+                console.log(name +" are working now!" +"' +
             fonctionString +
             '");\
-                console.log("f içi i: " + i);\
                 nodeList[i].data.returnValue = mat1;\
                 nodeList[i].isExecuted = true;\
                 '
         );
         let a = f(nodeIndexBul(node.id), cv, nodeList);
-        console.log("let a 188:" + a);
       }
 
       node.isExecuted = true;
@@ -104,7 +99,6 @@ export function engine_run(node_List, cv) {
     //        ""   calismadiysa false
 
     for (var node in nodeList) {
-      console.log("nodeCalistiMi logu nodlar=" + nodeList[node]);
       if (nodeList[node].id == nodeId) {
         try {
           if (nodeList[node].isExecuted == true) {
@@ -138,7 +132,7 @@ export function engine_run(node_List, cv) {
   function isReferanceParam(param) {
     let temp = "" + param;
     temp = temp.split(":");
-    console.log("temo[0]:" + temp[0] + " temp[1]:" + temp[1]);
+    //console.log("temo[0]:" + temp[0] + " temp[1]:" + temp[1]);
     if (temp[0] == "ref") {
       return temp[1];
     } else {
@@ -149,9 +143,8 @@ export function engine_run(node_List, cv) {
   //node listesinden verlen tek bir nodun data kısmından
   //parametreler ve girilen degerler ile fonksiyonun olusturulmasi
   function createFunction(data) {
-    console.log("data :" + data);
+    //console.log("data :" + data);
     let fString = "cv." + data.functionName + "(";
-    console.log("createFunction 237 : " + fString);
     let length = data.parameters.length;
     data.parameters.forEach((element) => {
       //son parametre degilse currn valueyi al
@@ -166,7 +159,7 @@ export function engine_run(node_List, cv) {
           //parmetredeki deger null ise ve gerekli degilse default degeri ver
           if (element.required == true) {
             //gerekliyse hata ver
-            errorFunction(
+            errorFunction("[ERROR]: "+
               nodeList[1].data.functionName +
                 " fonksiyonunda " +
                 element.name +
@@ -213,7 +206,6 @@ export function engine_run(node_List, cv) {
           }else{
             //
             queue.push(nodeList[nodeIndexBul(referansNode)]);
-            console.log("biz burdayik");
             //
           }
           isExecuted = nodeCalistiMi(referansNode);
