@@ -1,16 +1,14 @@
-FROM ubuntu:20.04
+FROM node:16-alpine
 
-RUN apt-get update
+WORKDIR /home
 
-RUN bash -c 'DEBIAN_FRONTEND=noninteractive apt install npm -y --force-yes'
-RUN bash -c 'DEBIAN_FRONTEND=noninteractive apt install nodejs -y --force-yes'
+RUN mkdir opencv-graphical-block-diagramming
 
-
-COPY ./opencv-graphical-block-diagramming /home/
-COPY ./entrypoint.sh /home/
+COPY ./opencv-graphical-block-diagramming /home/opencv-graphical-block-diagramming
 
 WORKDIR /home/opencv-graphical-block-diagramming
 
-RUN bash -c 'npm install'
+RUN npm install
+RUN npm update chokidar
 
-ENTRYPOINT ["bash","-c","/home/entrypoint.sh"]
+CMD ["npm","start"]
